@@ -1,14 +1,12 @@
-- Introduction
-  - [Overview](basics/overview.md)
-    - [Sub Topic](basics/requirements/sub-topic.md)
-  - [Installation](basics/installation.md)
-- M0. Checking Existing Databases
-  - [m6A database](M0_Checking_Existing_Databases/m6A_Atlas.md)
-  - [SNP disease database](M0_Checking_Existing_Databases/RMDisease.md)
-  - [Site prediction](M0_Checking_Existing_Databases/Whistle_Server.md)
-- M1. Data Preprocessing
+- [Introduction](intro/overview.md)
+  - [Overview](intro/overview.md)
+  - [Dataset](intro/dataset.md)
+  - [Contact](intro/contact.md)
+- [M0. Checking Databases](M0_Checking_Existing_Databases/database.md)
+  - [Databases](M0_Checking_Existing_Databases/database.md)
+- [M1. Data Preprocessing](M1_Data_Preprocessing/Data_Preprocessing.md)
   - [Obtaining GEO data](M1_Data_Preprocessing/SRA_toolkit.md)
-  - [Quality evaluation](M1_Data_Preprocessing/FASTQC.md)
+  - [Quality assessment](M1_Data_Preprocessing/FASTQC.md)
   - [Reads trimming](M1_Data_Preprocessing/Trim_Galore.md)
   - [Quality evaluation](M1_Data_Preprocessing/Trumpet.md)
   - [Reads alignment](M1_Data_Preprocessing/Hisat2.md)
@@ -22,7 +20,7 @@
   - [GO enrichment analysis](M3_Site_Detection_Host/DAVID.md)
 - M4. Site Detection - Virus
   - [m6A-seq data analysis](M4_Site_Detection_Virus/exomePeak2.md)
-  - [Visualizatino of reads](M4_Site_Detection_Virus/IGV.md)
+  - [Visualization of reads](M4_Site_Detection_Virus/IGV.md)
 - M5. Differential Methylation
   - [m6A-seq data analysis](M5_Differential_Methylation/exomePeak2.md)
   - [Motif finding](M5_Differential_Methylation/STREME.md)
