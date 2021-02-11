@@ -66,7 +66,7 @@ unzip SRR5179431_fastqc.zip
 
 or unpack .zip files in result directory:
 
-```bash
+```shell
 for zip in *.zip
 do
 unzip $zip
