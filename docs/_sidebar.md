@@ -1,15 +1,15 @@
-- [Introduction](intro/overview.md)
+- Introduction
   - [Overview](intro/overview.md)
   - [Dataset](intro/dataset.md)
   - [Contact](intro/contact.md)
-- [M0. Checking Databases](M0_Checking_Existing_Databases/database.md)
+- M0. Checking Databases
   - [Databases](M0_Checking_Existing_Databases/database.md)
-- [M1. Data Preprocessing](M1_Data_Preprocessing/Data_Preprocessing.md)
+- M1. Data Preprocessing
   - [Obtaining GEO data](M1_Data_Preprocessing/SRA_toolkit.md)
   - [Quality assessment](M1_Data_Preprocessing/FASTQC.md)
   - [Reads trimming](M1_Data_Preprocessing/Trim_Galore.md)
-  - [Quality evaluation](M1_Data_Preprocessing/Trumpet.md)
   - [Reads alignment](M1_Data_Preprocessing/Hisat2.md)
+  - [Quality assessment](M1_Data_Preprocessing/Trumpet.md)
 - M2. Differential Expression
   - [Differential expression](M2_Differential_Expression/Ballgown.md)
 - M3. Site Detection - Host
