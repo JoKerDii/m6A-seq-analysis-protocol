@@ -8,34 +8,22 @@ The Sequence Read Archive (SRA) is a publically accessible archive for high thro
 
 For Ubuntu
 
-1.  Fetch the tar file from the canonical location at NCBI (December 16, 2020, version 2.10.9)
-
 ```shell
-wget --output-document sratoolkit.tar.gz https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.10.9/sratoolkit.2.10.9-ubuntu64.tar.gz
-```
+# Download and extract the latest version
+$ wget --output-document sratoolkit.tar.gz https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.10.9/sratoolkit.2.10.9-ubuntu64.tar.gz
+$ tar -vxzf sratoolkit.2.10.9-ubuntu64.tar.gz
 
-2. Extract the contents of the tar file:
+# Append the path to your PATH environment variable:
+$ export PATH=$PATH:/path/to/sratoolkit.2.10.9-ubuntu64/bin
 
-```shell
-tar -vxzf sratoolkit.2.10.9-ubuntu64.tar.gz
-```
-
-3. Append the path to the binaries to your PATH environment variable:
-
-```shell
-export PATH=$PATH:$PWD/sratoolkit.2.10.9-ubuntu64/bin
-```
-
-4. Verify the configuration
-
-```shell
-which fastq-dump
+# Verify the installation
+$ which fastq-dump
 ```
 
 This should produce the similar output as follows:
 
-```shell
-/home/User/sratoolkit.2.10.9-ubuntu64/bin/fastq-dump
+```markdown
+/path/to/sratoolkit.2.10.9-ubuntu64/bin/fastq-dump
 ```
 
 
@@ -61,8 +49,8 @@ This should produce the similar output as follows:
 5. Extract FASTQ file from SRA-accession using SRA-Toolkit
 
 ```shell
-prefetch SRR5179431
-fastq-dump SRR5179431
+$ prefetch SRR5179431
+$ fastq-dump SRR5179431
 ```
 
 **Note 1**: you can download the text file (.txt) of the total or selected accession list by clicking on "Accession List".

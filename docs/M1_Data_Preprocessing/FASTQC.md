@@ -1,54 +1,47 @@
-# Assessing Quality with FastQC
+# Pre-alignment Quality Assessment with FastQC
 
 The first step of m6A-seq analysis is to assess the quality of the sequence reads in FASTQ files from the sequencing facility. [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) is a quality control application for high-throughput sequencing data. By using FastQC, we could be aware of any problems in raw sequence data before moving on to the next analysis. 
 
 ## Install FastQC
 
-FastQC requires a suitable 64-bit Java Runtime Environment (JRE) installed and in the path. To check the version of Java:
-
 ```shell
-java -version
+# FastQC requires a suitable 64-bit Java Runtime Environment (JRE) installed and in the path. Check the version of Java:
+$ java -version
+
+# For Linux, download and extract the latest version of FastQC from [project website](http://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc):
+$ wget http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip
+$ unzip fastqc_v0.11.9.zip
+
+# Append the path to your PATH environment variable:
+$ export PATH=$PATH:/path/to/FastQC
+
+# Verify installation:
+$ fastqc -help
 ```
 
-For linux, install FastQC from [project website](http://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc) and follow the [instruction of setup](https://raw.githubusercontent.com/s-andrews/FastQC/master/INSTALL.txt):
 
-```shell
-wget http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip
-unzip fastqc_v0.11.9.zip
-```
-
-Verify installation:
-
-```shell
-cd /home/user/fastqc
-./fastqc -help
-```
 
 ## Execute FastQC
 
-Examine the quality of one FastQ file:
-
 ```shell
-cd /home/user/fastqc
-./fastqc -o /home/User/fastqcResult/ /home/User/fastqFiles/SRR5179431.fastq
-```
+# Examine the quality of one FastQ file:
+$ fastqc -o /path/to/fastqcResult/ /path/to/fastqFiles/SRR5179431.fastq
 
-or examine the quality of multiple FastQ files:
-
-```shell
-cd /home/user/fastqc
-./fastqc -o /home/User/fastqcResult/ -t 6 /home/User/fastqFiles/*.fastq
+# or examine the quality of multiple FastQ files:
+$ fastqc -o /path/to/fastqcResult/ -t 6 /path/to/fastqFiles/*.fastq
 ```
 
 **Note**: `-o` (or `--outdir`) will create all output files in the specified output directory. `-t` specifies the number of files / threads that can be processed in parallel.
 
+
+
 ## FastQC Results
 
-FastQC produces two outputs: an HTML report and a packed file.
+FastQC produces two output files for each FastQ file: an HTML report ("SRR5179431_fastqc.html") and a packed file ("SRR5179431_fastqc.zip").
 
 ### 1. HTML report
 
-Transfer the HTML file to local place by *FileZilla* (mac) or *WinSCP* (win), and open the file in browser.
+Transfer the HTML file to local place by *FileZilla* (mac) or *WinSCP* (win), and open the file in browser. A screenshot of part of the HTML file is shown below.
 
 ![fastqc_html_report](../assets/images/M1/fastqc_html_report.png)
 
@@ -58,33 +51,29 @@ Transfer the HTML file to local place by *FileZilla* (mac) or *WinSCP* (win), an
 
 ### 2. Zip file
 
-Unpack a .zip file in result directory:
-
 ```shell
-unzip SRR5179431_fastqc.zip
-```
+# Unpack a .zip file in the result directory:
+$ unzip SRR5179431_fastqc.zip
 
-or unpack .zip files in result directory:
-
-```shell
-for zip in *.zip
+# or unpack .zip files in the result directory:
+$ for zip in *.zip
 do
 unzip $zip
 done
 ```
 
-To see the content of a single summary file:
+
 
 ```shell
-cat SRR5179431_fastqc/summary.txt
+# To see the content of a single summary file:
+$ cat SRR5179431_fastqc/summary.txt
+
+# or cat all summary files into one text file and have a look at it:
+$ cat */summary.txt > ~/all/fastqc_summaries.txt
+$ cat ~/all/fastqc_summaries.txt
 ```
 
-or cat all summary files into one text file and have a look at it:
 
-```shell
-cat */summary.txt > ~/all/fastqc_summaries.txt
-cat ~/all/fastqc_summaries.txt
-```
 
 # Reference
 
