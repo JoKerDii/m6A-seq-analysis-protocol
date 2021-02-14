@@ -11,6 +11,7 @@
   - [Reads alignment](M1_Data_Preprocessing/Hisat2.md)
   - [Quality assessment](M1_Data_Preprocessing/Trumpet.md)
 - M2. Differential Expression
+  - [Transcript assembly and quantification](M2_Differential_Expression/StringTie.md)
   - [Differential expression](M2_Differential_Expression/Ballgown.md)
 - M3. Site Detection - Host
   - [m6A-seq data analysis ](M3_Site_Detection_Host/exomePeak2.md)

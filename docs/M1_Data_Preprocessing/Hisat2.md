@@ -21,7 +21,7 @@ $ hisat2 --version
 
 
 
-## Sequence Alignment
+## Read Alignment
 
 ### 1. Build indexes
 
@@ -32,42 +32,43 @@ You may need reference sequence, and gene annotation to build indexes.
 $ wget https://genome-idx.s3.amazonaws.com/hisat/hg19_genome.tar.gz
 $ tar -zxvf hg19_genome.tar.gz
 
-# or download reference sequence and gene annotation from Illumina iGenome before building index by hisat2-build
+# or download reference sequence and gene annotation from Illumina iGenome website before building index by hisat2-build
 $ wget https://s3.amazonaws.com/local-run-manager/genomes/Homo_sapiens.zip
 $ unzip Homo_sapiens.zip
 # genome in: /path/to/Homo_sapiens/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa
-$ mkdir /path/to/index
-$ cd /path/to/index
 $ hisat2-build -p 20 /path/to/genome.fa genome
 ```
 
  `hisat2-build` generates eight `.ht2` files, from `genome.1.ht2` to `genome.8.ht2`.
 
-### 2. Run HISAT2 to get SAM output
+### 2. Run HISAT2 
 
 ```shell
-$ hisat2 -p 10 -x genome -U /path/to/SRR5179431_trimmed.fq -S SRR5179431_trimmed.sam --summary-file SRR5179431_trimmed_summary.txt
+# Align reads to genome
+$ hisat2 -p 10 -x genome -U /path/to/SRR5978869_trimmed.fq -S SRR5978869_trimmed.sam --dta
 ```
 
 **Note 1**:
 
-| Common Arguments and Options | Description |
+| Arguments and Options | Description |
 | ------ | ----------- |
-| -x <hisat2-idx> | The basename of the index for the reference genome. |
-| -U <r> | Comma-separated list of files containing unpaired reads to be aligned. |
-| -S <hit> | File to write SAM alignments to. |
-| --summary-file    | Print alignment summary to this file. |
-| -p/--threads NTHREADS | Launch NTHREADS parallel search threads (default: 1). |
+| -x \<hisat2-idx\> | The basename of the index for the reference genome. |
+| -U \<r\> | Comma-separated list of files containing unpaired reads to be aligned. |
+| -S \<hit\> | File to write SAM alignments to. |
+| -p/--threads \<NTHREADS\> | Launch NTHREADS parallel search threads (default: 1). |
+| --dta | Report alignments tailored for transcript assemblers including StringTie. |
 
 **Note 2**: HISAT2 does not require a GFF or GTF file but these annotation files will be needed at a later stage of analysis.
 
-### Outputs
+**Note 3**: Run HISAT2 with `--dta` option to include the tag `XS` to indicate the genomic strand that produced the RNA from which the read was sequenced. This is required by StringTie.
 
-Two files should be generated: one SAM file ("SRR5179431_trimmed.sam") and a text file ("SRR5179431_trimmed_summary.txt").
+### Output
+
+HISAT2 produces a SAM file ("SRR5978869_trimmed.sam").
 
 ```shell
 # To see the first few lines of the output SAM file
-$ head SRR5179431_trimmed.sam
+$ head SRR5978869_trimmed.sam
 ```
 
 ```markdown
@@ -83,19 +84,6 @@ $ head SRR5179431_trimmed.sam
 @SQ     SN:chr8 LN:146364022
 ```
 
-```shell
-# To see the first few lines of the output text file
-$ head SRR5179431_trimmed_summary.txt
-```
-
-```markdown
-9758377 reads; of these:
-  9758377 (100.00%) were unpaired; of these:
-    1191861 (12.21%) aligned 0 times
-    7985060 (81.83%) aligned exactly 1 time
-    581456 (5.96%) aligned >1 times
-87.79% overall alignment rate
-```
 
 
 

@@ -25,10 +25,10 @@ $ fastqc -help
 
 ```shell
 # Examine the quality of one FastQ file:
-$ fastqc -o /path/to/fastqcResult/ /path/to/fastqFiles/SRR5179431.fastq
+$ fastqc -o /path/to/fastqc_result/ /path/to/fastqFiles/SRR5978869.fastq
 
 # or examine the quality of multiple FastQ files:
-$ fastqc -o /path/to/fastqcResult/ -t 6 /path/to/fastqFiles/*.fastq
+$ fastqc -o /path/to/fastqc_result/ -t 6 /path/to/fastqFiles/*.fastq
 ```
 
 **Note**: `-o` (or `--outdir`) will create all output files in the specified output directory. `-t` specifies the number of files / threads that can be processed in parallel.
@@ -37,7 +37,7 @@ $ fastqc -o /path/to/fastqcResult/ -t 6 /path/to/fastqFiles/*.fastq
 
 ## FastQC Results
 
-FastQC produces two output files for each FastQ file: an HTML report ("SRR5179431_fastqc.html") and a packed file ("SRR5179431_fastqc.zip").
+FastQC produces two output files for each FastQ file: an HTML report ("SRR5978869_fastqc.html") and a packed file ("SRR5978869_fastqc.zip").
 
 ### 1. HTML report
 
@@ -53,7 +53,7 @@ Transfer the HTML file to local place by *FileZilla* (mac) or *WinSCP* (win), an
 
 ```shell
 # Unpack a .zip file in the result directory:
-$ unzip SRR5179431_fastqc.zip
+$ unzip SRR5978869_fastqc.zip
 
 # or unpack .zip files in the result directory:
 $ for zip in *.zip
@@ -66,7 +66,7 @@ done
 
 ```shell
 # To see the content of a single summary file:
-$ cat SRR5179431_fastqc/summary.txt
+$ cat SRR5978827_fastqc/summary.txt
 
 # or cat all summary files into one text file and have a look at it:
 $ cat */summary.txt > ~/all/fastqc_summaries.txt

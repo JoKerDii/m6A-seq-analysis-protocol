@@ -20,12 +20,6 @@ $ export PATH=$PATH:/path/to/sratoolkit.2.10.9-ubuntu64/bin
 $ which fastq-dump
 ```
 
-This should produce the similar output as follows:
-
-```markdown
-/path/to/sratoolkit.2.10.9-ubuntu64/bin/fastq-dump
-```
-
 
 
 ## Download Data from SRA
@@ -46,16 +40,12 @@ This should produce the similar output as follows:
 
 ![RunSelector](../assets/images/M1/RunSelector.png)
 
-5. Extract FASTQ file from SRA-accession using SRA-Toolkit
+5. Extract FastQ files from SRA-accession using SRA-Toolkit
 
 ```shell
-$ prefetch SRR5179431
-$ fastq-dump SRR5179431
+$ prefetch SRR5978869
+$ fastq-dump SRR5978869
 ```
-
-**Note 1**: you can download the text file (.txt) of the total or selected accession list by clicking on "Accession List".
-
-**Note 2**: SRA toolkit has an option `--split-files` for downloading paired end data to two FastQ files.
 
 
 

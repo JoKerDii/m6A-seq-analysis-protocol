@@ -6,7 +6,7 @@ Trim Galore is a Perl wrapper around Cutadapt and FastQC to consistently apply a
 
 ## Install Trim Galore
 
-Before installation, ensure [Cutadapt](https://github.com/marcelm/cutadapt) and [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) are already installed.
+Before installation, ensure that [Cutadapt](https://github.com/marcelm/cutadapt) and [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) are already installed.
 
 ```shell
 # Check the version of cutadapt
@@ -39,18 +39,16 @@ trim_galore [options] <filename(s)>
 First, low-quality base calls are trimmed off from the 3' end of the reads before adapter removal. Next, adapter sequences from the 3’ end of reads are detected and removed by cutadapt. Lastly, trimmed short sequences (default: < 20bp) are filtered.
 
 ```shell
-$ trim_galore -o /path/to/TrimGlore_result/ SRR5179431.fastq
+$ trim_galore -o /path/to/trim_galore_result/ SRR5978869.fastq
 ```
 
-**Note 1**: `-o` (or `--outdir`) will create all output files in the specified output directory. 
-
-**Note 2**: Please refer to the [User Guide](https://github.com/FelixKrueger/TrimGalore/blob/master/Docs/Trim_Galore_User_Guide.md) about other options for specific purposes and conditions. 
+**Note**: `-o` (or `--outdir`) will create all output files in the specified output directory. 
 
 
 
 ## Outputs
 
-Trim Galore produced two output files for each FastQ file: one text file ("SRR5179431.fastq_trimming_report.txt") and a trimmed FastQ file ("SRR5179431_trimmed.fq"). 
+Trim Galore produced two output files for each FastQ file: one text file ("SRR5978869.fastq_trimming_report.txt") and a trimmed FastQ file ("SRR5978869_trimmed.fq"). 
 
 ### 1. The text file
 
@@ -58,31 +56,19 @@ The text file provides a summary of running parameters.
 
 ```shell
 # To see the first few lines of the text file
-$ head SRR5179431.fastq_trimming_report.txt
+$ head SRR5978869.fastq_trimming_report.txt
 ```
 
 ```markdown
 SUMMARISING RUN PARAMETERS
 ==========================
-Input filename: /data/zhendi/protocol/SRR5179431.fastq
-Trimming mode: single-end
+Input filename: SRR5978869.fastq
+Trimming mode: single-endw
 Trim Galore version: 0.6.4_dev
 Cutadapt version: 3.2
 Number of cores used for trimming: 1
 Quality Phred score cutoff: 20
 Quality encoding type selected: ASCII+33
-(base) zhendi@amax:/data/zhendi/protocol/trim_galore_result$ head SRR5179431.fastq_trimming_report.txt
-
-SUMMARISING RUN PARAMETERS
-==========================
-Input filename: /data/zhendi/protocol/SRR5179431.fastq
-Trimming mode: single-end
-Trim Galore version: 0.6.4_dev
-Cutadapt version: 3.2
-Number of cores used for trimming: 1
-Quality Phred score cutoff: 20
-Quality encoding type selected: ASCII+33
-
 ```
 
 ### 2. The trimmed FastQ
