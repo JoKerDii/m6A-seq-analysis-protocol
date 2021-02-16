@@ -92,6 +92,10 @@ sig_transcripts = subset(results_transcripts, results_transcripts$pval<0.05)
 sig_genes = subset(results_genes, results_genes$pval<0.05)
 ```
 
+## Results
+
+DE results for dataset GSE93676:
+
 ```R
 # To see the first few lines of significant genes and transcripts:
 head(sig_transcripts)
@@ -111,6 +115,28 @@ head(sig_genes)
 # 74  MSTRG.10000    gene 1.942633e+58 0.01965612 0.6250552     NGLY1
 # 97  MSTRG.10028    gene 5.764237e+05 0.04138674 0.6962953   PDCD6IP
 # 141 MSTRG.10096    gene 1.998718e-66 0.02531592 0.6422143     PTH1R
+```
+
+DE results for dataset GSE47217:
+
+```R
+head(sig_transcripts)
+#        feature   id        fc        pval      qval
+# 57  transcript  479 0.9339480 0.036290263 0.7220780
+# 66  transcript  522 0.4784699 0.002714966 0.5205885
+# 86  transcript  685 0.8718279 0.008432731 0.5794108
+# 107 transcript  847 0.8360476 0.031839607 0.7176861
+# 117 transcript  908 1.0784123 0.004445226 0.5428939
+# 137 transcript 1051 0.4439950 0.036100181 0.7220780
+
+head(sig_genes)
+#             id feature        fc       pval      qval gene_name
+# 1   MSTRG.1000    gene 1.0657124 0.04960470 0.5469039  Ppp1r15b
+# 36 MSTRG.10096    gene 0.9003980 0.03641091 0.5417405     Lpin2
+# 55 MSTRG.10153    gene 0.9036117 0.02278910 0.5227679     Birc6
+# 56 MSTRG.10153    gene 0.9036117 0.02278910 0.5227679         .
+# 85  MSTRG.1024    gene 1.2618979 0.03277910 0.5417405  Tmem183a
+# 94  MSTRG.1027    gene 0.9601584 0.04558797 0.5458907   Adipor1
 ```
 
 
