@@ -4,7 +4,11 @@ The trumpet R package is a valuable tool for assessing the quality of m6A-seq da
 
 
 
+> **Issue**:
+>
 > The installation of Trumpet needs 'exomePeak' while 'exomePeak' is not available for R version 4.0.2 (98 server)
+>
+> Repo address: https://github.com/skyhorsetomoon/Trumpet
 
 
 

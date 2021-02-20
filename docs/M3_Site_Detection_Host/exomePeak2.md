@@ -14,7 +14,7 @@ BiocManager::install("exomePeak2")
 
 
 
-## Peak Calling and Differential Modification Analysis
+## Peak Calling
 
 ```R
 library(exomePeak2)
@@ -32,20 +32,8 @@ f2 = file.path(root, "SRR5978828_trimmed_s.bam")
 f3 = file.path(root, "SRR5978829_trimmed_s.bam")
 INPUT_BAM = c(f1,f2,f3)
 
-f1 = file.path(root, "SRR5179446_trimmed_s.bam")
-f2 = file.path(root, "SRR5179447_trimmed_s.bam")
-f3 = file.path(root, "SRR5179448_trimmed_s.bam")
-TREATED_INPUT_BAM = c(f1,f2,f3)
-
-f1 = file.path(root, "SRR5978869_trimmed_s.bam")
-f2 = file.path(root, "SRR5978870_trimmed_s.bam")
-f3 = file.path(root, "SRR5978871_trimmed_s.bam")
-TREATED_IP_BAM = c(f1,f2,f3)
-
 exomePeak2(bam_ip = IP_BAM,
            bam_input = INPUT_BAM,
-           bam_treated_input = TREATED_INPUT_BAM,
-           bam_treated_ip = TREATED_IP_BAM,
            genome = "hg19",
            paired_end = FALSE)
 ```
@@ -56,9 +44,9 @@ An output folder named `exomePeak2_output` will be created in the working direct
 - exomePeak2_output
 	- LfcGC.pdf
 	- RunInfo.txt
-	- DiffMod.bed
-	- DiffMod.csv
-	- DiffMod.rds
+	- Mod.bed
+	- Mod.csv
+	- Mod.rds
 	- ADDInfo
 		- ADDInfo_SizeFactors.csv
 		- ADDInfo_GLM_allDesigns.csv
