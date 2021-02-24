@@ -45,6 +45,8 @@ $ igvtools count -z 5 -w 10 -e 0 SRR5978869_trimmed_s.bam SRR5978869.tdf genome.
 
 The generated TDF files and BED file can then be visualized using IGV browser.
 
+![igv_app](../assets/images/M3/IGV_peak.png)
+
 
 
 # Reference

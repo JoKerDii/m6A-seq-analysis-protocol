@@ -4,9 +4,12 @@
 
 ## Visualization of Aligned Reads
 
-Upload BAM and its index (.bai) file to [IGV web application](https://igv.org/app/).
+Upload the following files to [IGV web application](https://igv.org/app/).
 
-![igv_app](../assets/images/M4/IGV.png)
+* HHV8 virus genome (.fa) and its index (.fai) to "Genome".
+* BAM and its index (.bai) file to "Track".
+
+![igv_app](../assets/images/M4/reads_igv.png)
 
 
 
@@ -28,7 +31,7 @@ $ igvtools count -z 5 -w 10 -e 0 SRR5978869_trimmed_s.bam SRR5978869.tdf sequenc
 
 The generated TDF files and BED file can then be visualized using IGV browser.
 
-
+![igv_app](../assets/images/M4/peaks_igv.png)
 
 # Reference
 

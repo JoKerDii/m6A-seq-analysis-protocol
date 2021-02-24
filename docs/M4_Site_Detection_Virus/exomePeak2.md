@@ -10,19 +10,20 @@ set.seed(1)
 root = "/path/to/data/HHV8"
 setwd(root)
 
-f1 = file.path(root, "SRR5978834_trimmed_s.bam")
-f2 = file.path(root, "SRR5978835_trimmed_s.bam")
-f3 = file.path(root, "SRR5978836_trimmed_s.bam")
+f1 = file.path(root, "SRR5179446_trimmed_s.bam")
+f2 = file.path(root, "SRR5179447_trimmed_s.bam")
+f3 = file.path(root, "SRR5179448_trimmed_s.bam")
 IP_BAM = c(f1,f2,f3) 
 
-f1 = file.path(root, "SRR5978827_trimmed_s.bam")
-f2 = file.path(root, "SRR5978828_trimmed_s.bam")
-f3 = file.path(root, "SRR5978829_trimmed_s.bam")
+f1 = file.path(root, "SRR5978869_trimmed_s.bam")
+f2 = file.path(root, "SRR5978870_trimmed_s.bam")
+f3 = file.path(root, "SRR5978871_trimmed_s.bam")
 INPUT_BAM = c(f1,f2,f3)
 
 exomePeak2(bam_ip = IP_BAM,
            bam_input = INPUT_BAM,
            gff_dir = GENE_ANNO_GTF,
+           library_type = "2nd_strand",
            paired_end = FALSE)
 ```
 

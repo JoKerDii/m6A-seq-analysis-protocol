@@ -37,6 +37,7 @@ exomePeak2(bam_ip = IP_BAM,
            bam_treated_input = TREATED_INPUT_BAM,
            bam_treated_ip = TREATED_IP_BAM,
            genome = "hg19",
+           library_type = "2nd_strand",
            paired_end = FALSE)
 ```
 

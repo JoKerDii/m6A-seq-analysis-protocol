@@ -19,6 +19,7 @@
   - [Distribution of m6A sites](M3_Site_Detection_Host/MetaTX.md)
   - [Visualization of reads](M3_Site_Detection_Host/IGV.md)
   - [GO enrichment analysis](M3_Site_Detection_Host/DAVID.md)
+  - [Annotation Web Server](M3_Site_Detection_Host/RNAmod.md)
 - M4. Site Detection - Virus
   - [m6A-seq data analysis](M4_Site_Detection_Virus/exomePeak2.md)
   - [Visualization of reads](M4_Site_Detection_Virus/IGV.md)

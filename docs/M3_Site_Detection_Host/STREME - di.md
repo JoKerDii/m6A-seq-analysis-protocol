@@ -16,6 +16,8 @@ $ cd bedtools2
 $ make
 $ export PATH=$PATH:/path/to/bedtools2/bin
 
+export PATH=$PATH:/home/zhendi/bedtools2/bin
+
 # Verify installation
 $ bedtools --version
 ```
@@ -23,13 +25,18 @@ $ bedtools --version
 ### 2. Convert BED to FASTA
 
 ```shell
-$ bedtools getfasta -s -fi /path/to/genome.fa -bed /path/to/Mod.bed -split -fo mod.fa
-```
+$ bedtools getfasta -fi /path/to/genome.fa -bed /path/to/Mod.bed -fo mod.fa
 
-The "mod.bed" file is generated from exomePeak2 package, and the "geneme.fa" file has been downloaded previously and located in 
+bedtools getfasta -s -fi /data/zhendi/wei/star-genome-ref/g2/Homo_sapiens/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa -bed /data/zhendi/protocol/exomePeak2/data/homo/exomePeak2_output_peakcalling_2strand*/Mod.bed -split -fo mod1.fa
 
-```markdown
-/path/to/Homo_sapiens/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa
+bedtools getfasta -s -fi /data/zhendi/wei/star-genome-ref/g2/Homo_sapiens/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa -bed /data/zhendi/protocol/exomePeak2/data/homo/exomePeak2_output_diff_2strand*/DiffMod.bed -split -fo Diffmod1.fa
+
+
+# /data/zhendi/wei/star-genome-ref/g2/Homo_sapiens/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa
+# /data/zhendi/protocol/exomePeak2/data/homo/exomePeak_output_peakcalling_2strand*/Mod.bed
+bedtools getfasta -fi /data/zhendi/wei/star-genome-ref/g2/Homo_sapiens/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa -bed /data/zhendi/protocol/exomePeak2/data/homo/exomePeak2_output_peakcalling_2strand*/Mod.bed -fo mod.fa
+
+bedtools getfasta -fi /data/zhendi/wei/star-genome-ref/g2/Homo_sapiens/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa -bed /data/zhendi/protocol/exomePeak2/data/homo/exomePeak2_output_diff_2strand*/DiffMod.bed -fo Diffmod.fa
 ```
 
 
@@ -47,6 +54,8 @@ $ make test
 $ make install
 $ export PATH=/path/to/meme-5.3.2/bin:/path/to/meme-5.3.2/libexec/meme-5.3.2:$PATH
 
+export PATH=/home/zhendi/meme-5.3.2/bin:/home/zhendi/meme-5.3.2/libexec/meme-5.3.2:$PATH
+
 # Verify installation
 $ meme -version
 $ streme -version
@@ -58,10 +67,14 @@ $ streme -version
 
 ```shell
 # Usage of command-line version: https://meme-suite.org/meme/doc/streme.html?man_type=web
-$ streme --dna --objfun de --minw 5 --maxw 10 --o /path/to/streme_result --p Mod.fa
+$ streme --dna --objfun cd --minw 5 --maxw 10 --o /path/to/streme_result --p Mod.fa
+# not sure whether --objfun de or --objfun cd, the former requires equal length of peaks
+streme --dna --objfun de --minw 5 --maxw 10 --o /data/zhendi/protocol/streme_result/mod_result --p mod.fa
 
-# * Not sure whether --objfun de or --objfun cd, the former requires equal length of peaks
+streme --dna --objfun de --minw 5 --maxw 10 --o /data/zhendi/protocol/streme_result/diffmod_result --p Diffmod.fa
 ```
+
+
 
 ## Outputs
 

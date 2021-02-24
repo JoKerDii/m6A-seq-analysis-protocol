@@ -35,6 +35,7 @@ INPUT_BAM = c(f1,f2,f3)
 exomePeak2(bam_ip = IP_BAM,
            bam_input = INPUT_BAM,
            genome = "hg19",
+           library_type = "2nd_strand",
            paired_end = FALSE)
 ```
 
