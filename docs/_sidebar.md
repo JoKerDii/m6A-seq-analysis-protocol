@@ -26,7 +26,7 @@
   - [m6A-seq data analysis](M5_Differential_Methylation/exomePeak2.md)
   - [Motif finding](M5_Differential_Methylation/STREME.md)
   - [Distribution of m6A sites](M5_Differential_Methylation/MetaTX.md)
-  - [Visualizatino of reads](M5_Differential_Methylation/IGV.md)
+  - [Visualization of reads](M5_Differential_Methylation/IGV.md)
   - [GO enrichment analysis](M5_Differential_Methylation/DAVID.md)
   - [Annotation Web Server](M5_Differential_Methylation/RNAmod.md)
 - M6. Reference based analysis

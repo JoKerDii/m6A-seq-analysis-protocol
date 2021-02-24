@@ -27,11 +27,6 @@ $ tar xvzf trim_galore.tar.gz
 $ trim_galore -v
 ```
 
-```markdown
-# Usage
-trim_galore [options] <filename(s)>
-```
-
 
 
 ## Adaptive Quality and Adapter Trimming

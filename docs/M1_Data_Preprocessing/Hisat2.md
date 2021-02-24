@@ -27,24 +27,39 @@ $ hisat2 --version
 
 You may need reference sequence, and gene annotation to build indexes. 
 
+You can either download HISAT2 indexes from its website: http://daehwankimlab.github.io/hisat2/download/, or
+
 ```shell
-# You can either download HISAT2 indexes from its website: http://daehwankimlab.github.io/hisat2/download/
 $ wget https://genome-idx.s3.amazonaws.com/hisat/hg19_genome.tar.gz
 $ tar -zxvf hg19_genome.tar.gz
+```
 
-# or download reference sequence and gene annotation from Illumina iGenome website before building index by hisat2-build
-$ wget https://s3.amazonaws.com/local-run-manager/genomes/Homo_sapiens.zip
-$ unzip Homo_sapiens.zip
-# genome in: /path/to/Homo_sapiens/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa
-$ hisat2-build -p 20 /path/to/genome.fa genome
+or download reference sequence and gene annotation from Illumina iGenome website before building index by `hisat2-build` command.
+
+```shell
+# hg19 genome : /path/to/Homo_sapiens/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa
+# HHV8 genome : /path/to/HHV8/sequence.fasta
+
+$ mv /path/to/Homo_sapiens/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa /path/to/homo/genome.fa
+$ cd /path/to/homo/
+$ hisat2-build -p 20 genome.fa genome
+$ cd /path/to/HHV8/
+$ hisat2-build -p 20 sequence.fasta genome
 ```
 
  `hisat2-build` generates eight `.ht2` files, from `genome.1.ht2` to `genome.8.ht2`.
 
+
+
 ### 2. Run HISAT2 
 
 ```shell
-# Align reads to genome
+# Align reads to hg19 genome
+$ cd /path/to/homo/
+$ hisat2 -p 10 -x genome -U /path/to/SRR5978869_trimmed.fq -S SRR5978869_trimmed.sam --dta
+
+# Align reads to HHV8 genome
+$ cd /path/to/HHV8/
 $ hisat2 -p 10 -x genome -U /path/to/SRR5978869_trimmed.fq -S SRR5978869_trimmed.sam --dta
 ```
 

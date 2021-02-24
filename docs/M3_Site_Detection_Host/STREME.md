@@ -66,7 +66,9 @@ $ streme --dna --objfun de --o /path/to/streme_result --p Mod.fa
  	- streme.xml
 ```
 
+Transfer the HTML file to local place by *FileZilla* (mac) or *WinSCP* (win), and open the file in browser. A screenshot of part of the HTML file is shown below.
 
+![streme_motif_finding](../assets/images/M3/motif.png)
 
 # Reference
 

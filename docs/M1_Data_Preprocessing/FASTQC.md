@@ -2,6 +2,8 @@
 
 The first step of m6A-seq analysis is to assess the quality of the sequence reads in FASTQ files from the sequencing facility. [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) is a quality control application for high-throughput sequencing data. By using FastQC, we could be aware of any problems in raw sequence data before moving on to the next analysis. 
 
+
+
 ## Install FastQC
 
 ```shell
@@ -21,7 +23,7 @@ $ fastqc -help
 
 
 
-## Execute FastQC
+## Run FastQC
 
 ```shell
 # Examine the quality of one FastQ file:

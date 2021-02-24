@@ -7,7 +7,7 @@
 
 [Samtools](http://www.htslib.org/) is a suite of programs for interacting with high-throughput sequencing data [2]. SAM files produced by HISAT2 must be sorted and converted to BAM using samtools before running StringTie.
 
-### Install Samtools
+### 1. Install Samtools
 
 ```shell
 # Download and extract samtools
@@ -21,7 +21,7 @@ $ export PATH=$PATH:/path/to/samtools-1.11
 $ samtools --version
 ```
 
-### Run Samtools
+### 2. Run Samtools
 
 ```shell
 # Generate sorted BAM
@@ -32,7 +32,7 @@ $ samtools view -Su SRR5978869_trimmed.sam | samtools sort -@ 20 -o SRR5978869_t
 
 The input SAM(BAM) file must be sorted by reference position. Every spliced read alignment in the input must contain the tag `XS` to indicate the genomic stand that produced the RNA from which the read was sequenced. These requirements are met by running HISAT2 with `--dta` option and samtools.
 
-### Install StringTie
+### 1. Install StringTie
 
 ```shell
 # Download and extract StringTie
@@ -46,15 +46,12 @@ $ export PATH=$PATH:/path/to/stringtie-2.1.4.Linux_x86_64
 $ stringtie --version
 ```
 
-### Run StringTie
+### 2. Run StringTie
+
+Run with the downloaded gene annotation:
 
 ```markdown
-stringtie <aligned_reads.bam> [options]*
-```
-
-With the downloaded gene annotation:
-
-```markdown
+# hg19
 /path/to/Homo_sapiens/UCSC/hg19/Annotation/Illumina Annotation Engine/Cache/24/GRCh37_RefSeq_24.gff
 ```
 
@@ -92,7 +89,7 @@ $ stringtie /path/to/SRR5978869_trimmed_s.bam -eB -p 20 -G /path/to/homo_stringt
 | -b \<path\>           | Same as -B option, but these files will be created in the provided directory \<path\> instead of the directory specified by the `-o` option |
 | -p \<int\>            | Specify the number of processing threads (CPUs) to use for transcript assembly. The default is 1 |
 
-### Output
+### 3. Output
 
 1. StringTie's primary GTF output ("SRR5978869_trimmed_s.gtf") contains details of the transcripts that StringTie assembles from RNA-Seq data.
 2. Ballgown input table files ( (1) e2t.ctab, (2) e_data.ctab, (3) i2t.ctab, (4) i_data.ctab, and (5) t_data.ctab ) contain coverage data for all transcripts.
