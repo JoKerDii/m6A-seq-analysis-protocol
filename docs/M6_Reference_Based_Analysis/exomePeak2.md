@@ -1,7 +1,5 @@
 # exomePeak2
 
-exomePeak2 is an R/Bioconductor package which provides bias-aware quantification and peak detection for Methylated RNA immunoprecipitation sequencing data (MeRIP-Seq) [1].
-
 
 
 ## Reference based Quantification and Differential Analysis

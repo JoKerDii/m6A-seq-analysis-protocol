@@ -17,7 +17,7 @@ $ bedtools getfasta -s -fi /path/to/genome.fa -bed /path/to/DiffMod.bed -split -
 ```shell
 # Usage of command-line version: https://meme-suite.org/meme/doc/streme.html
 $ streme --dna --objfun de --minw 5 --maxw 10 --o /path/to/streme_result --p DiffMod.fa
-# not sure whether --objfun de or --objfun cd, the former requires equal length of peaks
+# not sure whether --objfun cd or --objfun de, the former requires equal length of peaks
 ```
 
 

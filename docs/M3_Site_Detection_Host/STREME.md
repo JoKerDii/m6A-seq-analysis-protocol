@@ -60,7 +60,7 @@ $ streme -version
 # Usage of command-line version: https://meme-suite.org/meme/doc/streme.html?man_type=web
 $ streme --dna --objfun de --minw 5 --maxw 10 --o /path/to/streme_result --p Mod.fa
 
-# * Not sure whether --objfun de or --objfun cd, the former requires equal length of peaks
+# * Not sure whether --objfun cd or --objfun de, the former requires equal length of peaks
 ```
 
 ## Outputs
