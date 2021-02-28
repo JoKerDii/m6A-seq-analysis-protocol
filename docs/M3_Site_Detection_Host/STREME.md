@@ -1,6 +1,6 @@
 # STREME
 
-[STREME](https://meme-suite.org/meme/doc/streme.html) can find motifs in large sequence datasets and report accurate significance estimates for each motif that it discovers [1]. Specifically, STREME works by discovering ungapped motifs that are enriched in the sequences or relatively enriched in them compared to the control sequences.
+[STREME](https://meme-suite.org/meme/doc/streme.html) can find motifs in large sequence datasets and report accurate significance estimates for each motif that it discovers [1]. Specifically, STREME works by discovering ungapped motifs that are enriched in the sequences or relatively enriched in them compared to the control sequences. We are going to use this tool to find m6A motifs within peaks that has been found.
 
 
 
@@ -26,11 +26,7 @@ $ bedtools --version
 $ bedtools getfasta -s -fi /path/to/genome.fa -bed /path/to/Mod.bed -split -fo mod.fa
 ```
 
-The "mod.bed" file is generated from exomePeak2 package, and the "geneme.fa" file has been downloaded previously and located in 
-
-```markdown
-/path/to/Homo_sapiens/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa
-```
+The "mod.bed" file is generated from exomePeak2 package, and the "geneme.fa" is the whole genome of hg19 which has been downloaded previously.
 
 
 

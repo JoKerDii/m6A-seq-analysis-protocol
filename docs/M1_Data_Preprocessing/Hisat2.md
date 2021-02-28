@@ -1,6 +1,6 @@
 # HISAT2
 
-[HISAT2](http://daehwankimlab.github.io/hisat2/manual/) is a fast and sensitive alignment program for mapping next-generation sequencing reads to reference genome(s) [1,2].
+[HISAT2](http://daehwankimlab.github.io/hisat2/manual/) is a fast and sensitive alignment program for mapping next-generation sequencing reads to reference genome(s) [1,2]. We are going to use this tool to align the reads to hg19 genome, HHV8 genome, and mm10 genome, respectively.
 
 
 
@@ -25,9 +25,7 @@ $ hisat2 --version
 
 ### 1. Build indexes
 
-You may need reference sequence, and gene annotation to build indexes. 
-
-You can either download HISAT2 indexes from its website: http://daehwankimlab.github.io/hisat2/download/, or
+You can either download HISAT2 indexes from its website: http://daehwankimlab.github.io/hisat2/download/, 
 
 ```shell
 $ wget https://genome-idx.s3.amazonaws.com/hisat/hg19_genome.tar.gz
@@ -37,31 +35,109 @@ $ tar -zxvf hg19_genome.tar.gz
 or download reference sequence and gene annotation from Illumina iGenome website before building index by `hisat2-build` command.
 
 ```shell
-# hg19 genome : /path/to/Homo_sapiens/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa
-# HHV8 genome : /path/to/HHV8/sequence.fasta
-
-$ mv /path/to/Homo_sapiens/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa /path/to/homo/genome.fa
 $ cd /path/to/homo/
-$ hisat2-build -p 20 genome.fa genome
+$ hisat2-build -p 20 hg19_genome.fa genome
+
 $ cd /path/to/HHV8/
-$ hisat2-build -p 20 sequence.fasta genome
+$ hisat2-build -p 20 hhv8_sequence.fasta genome
+
+$ cd /path/to/mm10/
+$ hisat2-build -p 20 mm10_genome.fasta genome
 ```
 
- `hisat2-build` generates eight `.ht2` files, from `genome.1.ht2` to `genome.8.ht2`.
-
-
+ `hisat2-build` generates eight `.ht2` files, from `genome.1.ht2` to `genome.8.ht2`, which we will use for alignment in the next step.
 
 ### 2. Run HISAT2 
 
-```shell
-# Align reads to hg19 genome
-$ cd /path/to/homo/
-$ hisat2 -p 10 -x genome -U /path/to/SRR5978869_trimmed.fq -S SRR5978869_trimmed.sam --dta
+Getting sorted BAM:
 
-# Align reads to HHV8 genome
-$ cd /path/to/HHV8/
-$ hisat2 -p 10 -x genome -U /path/to/SRR5978869_trimmed.fq -S SRR5978869_trimmed.sam --dta
+```bash
+#!/bin/bash
+Data="/path/to/trim_galore_result"
+Output="/path/to/homo_result"
+
+cd /path/to/homo/ # where storing index
+for s in SRR5978827 SRR5978828 SRR5978829 SRR5978834 SRR5978835 SRR5978836 SRR5978869 SRR5978870 SRR5978871 SRR5179446 SRR5179447 SRR5179448
+do 
+hisat2 -x genome --summary-file $s.m6A.align_summary -p 5 -U $Data/${s}_trimmed.fq | samtools view -Su |samtools sort -o $Output/${s}_sorted.bam
+wait
+done
+mkdir alignment_summary
+mv *.align_summary alignment_summary/
 ```
+
+```bash
+#!/bin/bash
+Data="/path/to/trim_galore_result"
+Output="/path/to/mm10_result"
+
+cd /path/to/mm10/ # where storing index
+for s in SRR866997 SRR866998 SRR866999 SRR867000 SRR867001 SRR867002 SRR866991 SRR866992 SRR866993 SRR866994 SRR866995 SRR866996
+do 
+hisat2 -x genome --summary-file $s.m6A.align_summary -p 5 -U $Data/${s}_trimmed.fq | samtools view -Su |samtools sort -o $Output/${s}_sorted.bam
+wait
+done
+mkdir alignment_summary
+mv *.align_summary alignment_summary/
+```
+
+```bash
+#!/bin/bash
+Data="/path/to/trim_galore_result"
+Output="/path/to/hhv8_result"
+
+cd /path/to/hhv8/ # where storing index
+for s in SRR5978827 SRR5978828 SRR5978829 SRR5978834 SRR5978835 SRR5978836 SRR5978869 SRR5978870 SRR5978871 SRR5179446 SRR5179447 SRR5179448
+do 
+hisat2 -x genome --summary-file $s.m6A.align_summary -p 5 -U $Data/${s}_trimmed.fq | samtools view -Su |samtools sort -o $Output/${s}_sorted.bam
+wait
+done
+mkdir alignment_summary
+mv *.align_summary alignment_summary/
+```
+
+Getting SAM
+
+```bash
+#!/bin/bash
+Data="/path/to/trim_galore_result"
+Output="/path/to/homo_result"
+
+cd /path/to/homo/ # where storing index
+for s in SRR5978827 SRR5978828 SRR5978829 SRR5978834 SRR5978835 SRR5978836 SRR5978869 SRR5978870 SRR5978871 SRR5179446 SRR5179447 SRR5179448
+do 
+hisat2 -p 10 -x genome -U /path/to/${s}_trimmed.fq -S $s.sam --dta
+wait
+done
+```
+
+```bash
+#!/bin/bash
+Data="/path/to/trim_galore_result"
+Output="/path/to/mm10_result"
+
+cd /path/to/mm10/ # where storing index
+for s in SRR866997 SRR866998 SRR866999 SRR867000 SRR867001 SRR867002 SRR866991 SRR866992 SRR866993 SRR866994 SRR866995 SRR866996
+do 
+hisat2 -p 10 -x genome -U /path/to/${s}_trimmed.fq -S $s.sam --dta
+wait
+done
+```
+
+```bash
+#!/bin/bash
+Data="/path/to/trim_galore_result"
+Output="/path/to/hhv8_result"
+
+cd /path/to/hhv8/ # where storing index
+for s in SRR5978827 SRR5978828 SRR5978829 SRR5978834 SRR5978835 SRR5978836 SRR5978869 SRR5978870 SRR5978871 SRR5179446 SRR5179447 SRR5179448
+do 
+hisat2 -p 10 -x genome -U /path/to/${s}_trimmed.fq -S $s.sam --dta
+wait
+done
+```
+
+
 
 **Note 1**:
 
@@ -73,31 +149,10 @@ $ hisat2 -p 10 -x genome -U /path/to/SRR5978869_trimmed.fq -S SRR5978869_trimmed
 | -p/--threads \<NTHREADS\> | Launch NTHREADS parallel search threads (default: 1). |
 | --dta | Report alignments tailored for transcript assemblers including StringTie. |
 
-**Note 2**: HISAT2 does not require a GFF or GTF file but these annotation files will be needed at a later stage of analysis.
+Note that if the aligned results are going to assemble transcript with StringTie, a `--dta` option is necessary to include the tag `XS` to indicate the genomic strand that produced the RNA from which the read was sequenced. This is required by StringTie.
 
-**Note 3**: Run HISAT2 with `--dta` option to include the tag `XS` to indicate the genomic strand that produced the RNA from which the read was sequenced. This is required by StringTie.
-
-### Output
-
-HISAT2 produces a SAM file ("SRR5978869_trimmed.sam").
-
-```shell
-# To see the first few lines of the output SAM file
-$ head SRR5978869_trimmed.sam
-```
-
-```markdown
-@HD     VN:1.0  SO:unsorted
-@SQ     SN:chrM LN:16571
-@SQ     SN:chr1 LN:249250621
-@SQ     SN:chr2 LN:243199373
-@SQ     SN:chr3 LN:198022430
-@SQ     SN:chr4 LN:191154276
-@SQ     SN:chr5 LN:180915260
-@SQ     SN:chr6 LN:171115067
-@SQ     SN:chr7 LN:159138663
-@SQ     SN:chr8 LN:146364022
-```
+> `--dta/--downstream-transcriptome-assembly`
+> Report alignments tailored for transcript assemblers including StringTie. With this option, HISAT2 requires longer anchor lengths for de novo discovery of splice sites. This leads to fewer alignments with short-anchors, which helps transcript assemblers improve significantly in computation and memory usage.
 
 
 

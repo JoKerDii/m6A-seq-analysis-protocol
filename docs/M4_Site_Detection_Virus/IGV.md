@@ -21,8 +21,15 @@ Upload the following files to [IGV web application](https://igv.org/app/).
 ### 1. Generate TDF
 
 ```shell
-# Generate TDF
-$ igvtools count -z 5 -w 10 -e 0 SRR5978869_trimmed_s.bam SRR5978869.tdf sequence.fasta
+#!/bin/bash
+Data="/path/to/hhv8_result"
+Output="/path/to/hhv8_igv"
+
+for s in SRR5978827 SRR5978828 SRR5978829 SRR5978834 SRR5978835 SRR5978836 SRR5978869 SRR5978870 SRR5978871 SRR5179446 SRR5179447 SRR5179448
+do 
+igvtools count -z 5 -w 10 -e 0 $Data/${s}_sorted.bam $Output/${s}.tdf hhv8_genome.fa
+wait
+done
 ```
 
 

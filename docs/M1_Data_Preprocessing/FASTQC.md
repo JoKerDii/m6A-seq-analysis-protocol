@@ -41,17 +41,13 @@ $ fastqc -o /path/to/fastqc_result/ -t 6 /path/to/fastqFiles/*.fastq
 
 FastQC produces two output files for each FastQ file: an HTML report ("SRR5978869_fastqc.html") and a packed file ("SRR5978869_fastqc.zip").
 
-### 1. HTML report
-
-Transfer the HTML file to local place by *FileZilla* (mac) or *WinSCP* (win), and open the file in browser. A screenshot of part of the HTML file is shown below.
+You could transfer the HTML file to local place by *FileZilla* (mac) or *WinSCP* (win), and open the file in browser. A screenshot of part of the HTML file is shown below.
 
 ![fastqc_html_report](../assets/images/M1/fastqc_html_report.png)
 
-**Note 1**: two of the most important analysis modules in FastQC are **“Per base sequence quality”** plot and the **“Overrepresented sequences”** table. The “Per base sequence quality” plot provides the distribution of quality scores across all bases at each position in the reads. The “Overrepresented sequences” table displays the sequences (at least 20 bp) that occur in more than 0.1% of the total number of sequences, which aids in identifying contamination. 
+Note that two of the most important analysis modules in FastQC are **“Per base sequence quality”** plot and the **“Overrepresented sequences”** table. The “Per base sequence quality” plot provides the distribution of quality scores across all bases at each position in the reads. The “Overrepresented sequences” table displays the sequences (at least 20 bp) that occur in more than 0.1% of the total number of sequences, which aids in identifying contamination. You could also refer to [Analysis Modules](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/) in FastQC documentation for the interpretation of the HTML report. 
 
-**Note 2**: You can refer to [Analysis Modules](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/) in FastQC documentation for the interpretation of the HTML report. 
-
-### 2. Zip file
+The other output is a zip file for each sample. You could unpack the zip files and have a look at the summary.
 
 ```shell
 # Unpack a .zip file in the result directory:
@@ -62,11 +58,7 @@ $ for zip in *.zip
 do
 unzip $zip
 done
-```
 
-
-
-```shell
 # To see the content of a single summary file:
 $ cat SRR5978827_fastqc/summary.txt
 

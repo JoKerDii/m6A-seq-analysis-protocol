@@ -21,12 +21,31 @@ $ export PATH=$PATH:/path/to/samtools-1.11
 $ samtools --version
 ```
 
-### 2. Run Samtools
+### 2. Sort BAM
 
 ```shell
-# Generate sorted BAM
-$ samtools view -Su SRR5978869_trimmed.sam | samtools sort -@ 20 -o SRR5978869_trimmed_s.bam
+#!/bin/bash
+data = /path/to/homo_result/ 
+cd data
+for s in SRR5978827 SRR5978828 SRR5978829 SRR5978834 SRR5978835 SRR5978836 SRR5978869 SRR5978870 SRR5978871 SRR5179446 SRR5179447 SRR5179448
+do 
+samtools view -Su $data/${s}.sam | samtools sort -@ 20 -o ${s}_sorted.bam
+wait
+done
 ```
+
+```bash
+#!/bin/bash
+data = /path/to/mm10_result/ 
+cd data
+for s in SRR866997 SRR866998 SRR866999 SRR867000 SRR867001 SRR867002 SRR866991 SRR866992 SRR866993 SRR866994 SRR866995 SRR866996
+do 
+samtools view -Su $data/${s}.sam | samtools sort -@ 20 -o ${s}_sorted.bam
+wait
+done
+```
+
+
 
 ## Transcript Assembly and Quantification with StringTie
 
@@ -50,31 +69,77 @@ $ stringtie --version
 
 Run with the downloaded gene annotation:
 
-```markdown
-# hg19
-/path/to/Homo_sapiens/UCSC/hg19/Annotation/Illumina Annotation Engine/Cache/24/GRCh37_RefSeq_24.gff
+```bash
+#!/bin/bash
+annotation = /path/to/hg19_annotation.gff
+data = /path/to/homo_result/
+cd /path/to/stringtie_homo/
+
+for s in SRR5978827 SRR5978828 SRR5978829 SRR5978834 SRR5978835 SRR5978836 SRR5978869 SRR5978870 SRR5978871 SRR5179446 SRR5179447 SRR5179448
+do 
+stringtie $data/${s}_sorted.bam -p 20 -o ${s}.gtf -G $annotation
+wait
+done
+```
+
+```bash
+#!/bin/bash
+annotation = /path/to/mm10_annotation.gff
+data = /path/to/mm10_result/
+cd /path/to/stringtie_mm10/
+
+for s in SRR866997 SRR866998 SRR866999 SRR867000 SRR867001 SRR867002 SRR866991 SRR866992 SRR866993 SRR866994 SRR866995 SRR866996
+do 
+stringtie $data/${s}_sorted.bam -p 20 -o ${s}.gtf -G $annotation
+wait
+done
 ```
 
 ```shell
-# Assemble the read alignments
-$ stringtie /path/to/SRR5978869_trimmed_s.bam -p 20 -o SRR5978869_trimmed_s.gtf -G /path/to/GRCh37_RefSeq_24.gff
-
 # Generate a non-redundant set of transcripts
-$ stringtie --merge -G /path/to/GRCh37_RefSeq_24.gff -p 20 -o homo_stringtie_merged.gtf homo_stringtie_list.txt
+$ cd /path/to/stringtie_homo/
+$ stringtie --merge -G /path/to/hg19_annotation.gff -p 20 -o homo_stringtie_merged.gtf homo_stringtie_list.txt
+
+$ cd /path/to/stringtie_mm10/
+$ stringtie --merge -G /path/to/mm10_annotation.gff -p 20 -o mm10_stringtie_merged.gtf mm10_stringtie_list.txt
 ```
 
 The text file contains all GTF files generated when assembling the read alignments.
 
 ```txt
-SRR5978827_trimmed_s.gtf
-SRR5978828_trimmed_s.gtf
+SRR5978827.gtf
+SRR5978828.gtf
 ......
 ```
 
-```shell
-# Estimate transcript abundances and generate read coverage tables for Ballgown
-# Note that this is the only case where the -G option is not used with a reference annotation
-$ stringtie /path/to/SRR5978869_trimmed_s.bam -eB -p 20 -G /path/to/homo_stringtie_merged.gtf -o /path/to/ballgown/homo_tables/SRR5978869/SRR5978869.gtf
+Estimate transcript abundances and generate read coverage tables for Ballgown. Note that this is the only case where the `-G` option is not used with a reference annotation
+
+```bash
+#!/bin/bash
+data = /path/to/homo_result/
+cd /path/to/stringtie_homo/
+
+for s in SRR5978827 SRR5978828 SRR5978829 SRR5978834 SRR5978835 SRR5978836 SRR5978869 SRR5978870 SRR5978871 SRR5179446 SRR5179447 SRR5179448
+do 
+mkdir $s
+cd $s
+stringtie $data/${s}_sorted.bam -eB -p 20 -G ../homo_stringtie_merged.gtf -o $s.gtf
+wait
+done
+```
+
+```bash
+#!/bin/bash
+data = /path/to/mm10_result/
+cd /path/to/stringtie_mm10/
+
+for s in SRR866997 SRR866998 SRR866999 SRR867000 SRR867001 SRR867002 SRR866991 SRR866992 SRR866993 SRR866994 SRR866995 SRR866996
+do 
+mkdir $s
+cd $s
+stringtie $data/${s}_sorted.bam -eB -p 20 -G ../mm10_stringtie_merged.gtf -o $s.gtf
+wait
+done
 ```
 
 
@@ -91,9 +156,9 @@ $ stringtie /path/to/SRR5978869_trimmed_s.bam -eB -p 20 -G /path/to/homo_stringt
 
 ### 3. Output
 
-1. StringTie's primary GTF output ("SRR5978869_trimmed_s.gtf") contains details of the transcripts that StringTie assembles from RNA-Seq data.
+1. StringTie's primary GTF output ("SRR5978869.gtf") contains details of the transcripts that StringTie assembles from RNA-Seq data.
 2. Ballgown input table files ( (1) e2t.ctab, (2) e_data.ctab, (3) i2t.ctab, (4) i_data.ctab, and (5) t_data.ctab ) contain coverage data for all transcripts.
-3. Merged GTF ("SRR5978869_trimmed_s_m.gtf") is a uniform set of transcripts for all samples.
+3. Merged GTF ("homo_stringtie_merged.gtf") is a uniform set of transcripts for all samples.
 
 # Reference
 

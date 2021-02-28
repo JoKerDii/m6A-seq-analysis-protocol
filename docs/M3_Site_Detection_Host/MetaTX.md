@@ -1,5 +1,7 @@
 # MetaTX
 
+The [MetaTX](https://github.com/yue-wang-biomath/MetaTX.1.0) aims to plot the transcriptomic distribution of RNA-related genomic features [1]. We are going to use this tool to display the distribution of reads along the transcriptome.
+
 
 
 > **Issue:**
@@ -90,3 +92,8 @@ ggdraw() +
 
 
 ![igv_app](../assets/images/M3/distributionOfPeaks.png)
+
+# Reference
+
+[1] Y. Wang, K. Chen, Z. Wei, F. Coenen, J. Su, and J. Meng, "MetaTX: deciphering the distribution of mRNA-related features in the presence of isoform ambiguity, with applications in epitranscriptome analysis," Bioinformatics, 2020, doi: 10.1093/bioinformatics/btaa938. [[paper](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btaa938/5949013?redirectedFrom=fulltext)]
+

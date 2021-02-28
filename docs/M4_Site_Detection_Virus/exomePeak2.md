@@ -1,6 +1,6 @@
 # exomePeak2
 
-
+We are going to use this package for peak calling, finding enriched m6A sites on HHV8 transcripts.
 
 ## Peak Calling
 
@@ -10,20 +10,22 @@ set.seed(1)
 root = "/path/to/data/HHV8"
 setwd(root)
 
-f1 = file.path(root, "SRR5179446_trimmed_s.bam")
-f2 = file.path(root, "SRR5179447_trimmed_s.bam")
-f3 = file.path(root, "SRR5179448_trimmed_s.bam")
+f1 = file.path(root, "SRR5179446_sorted.bam")
+f2 = file.path(root, "SRR5179447_sorted.bam")
+f3 = file.path(root, "SRR5179448_sorted.bam")
 IP_BAM = c(f1,f2,f3) 
 
-f1 = file.path(root, "SRR5978869_trimmed_s.bam")
-f2 = file.path(root, "SRR5978870_trimmed_s.bam")
-f3 = file.path(root, "SRR5978871_trimmed_s.bam")
+f1 = file.path(root, "SRR5978869_sorted.bam")
+f2 = file.path(root, "SRR5978870_sorted.bam")
+f3 = file.path(root, "SRR5978871_sorted.bam")
 INPUT_BAM = c(f1,f2,f3)
+
+GENE_ANNO_GTF = file.path("/path/to/sequence.gff3")
 
 exomePeak2(bam_ip = IP_BAM,
            bam_input = INPUT_BAM,
            gff_dir = GENE_ANNO_GTF,
-           library_type = "2nd_strand",
+           library_type = "1st_strand",
            paired_end = FALSE)
 ```
 

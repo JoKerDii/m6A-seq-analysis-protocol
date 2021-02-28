@@ -1,6 +1,6 @@
 # Trim Galore
 
-Trim Galore is a Perl wrapper around Cutadapt and FastQC to consistently apply adapter and quality trimming to FastQ files.
+Trim Galore is a Perl wrapper around Cutadapt and FastQC to consistently apply adapter and quality trimming to FastQ files. We will use this tool for quality trimming, adapter trimming, and removing short sequences.
 
 
 
@@ -31,10 +31,24 @@ $ trim_galore -v
 
 ## Adaptive Quality and Adapter Trimming
 
-First, low-quality base calls are trimmed off from the 3' end of the reads before adapter removal. Next, adapter sequences from the 3’ end of reads are detected and removed by cutadapt. Lastly, trimmed short sequences (default: < 20bp) are filtered.
+In this procedure, first, low-quality base calls are trimmed off from the 3' end of the reads before adapter removal. Next, adapter sequences from the 3’ end of reads are detected and removed by cutadapt. Lastly, trimmed short sequences (default: < 20bp) are filtered.
 
-```shell
-$ trim_galore -o /path/to/trim_galore_result/ SRR5978869.fastq
+```bash
+#!/bin/bash
+for s in SRR5978827 SRR5978828 SRR5978829 SRR5978834 SRR5978835 SRR5978836 SRR5978869 SRR5978870 SRR5978871 SRR5179446 SRR5179447 SRR5179448
+do 
+trim_galore -o /path/to/trim_galore_result/homo/ $s.fastq
+wait
+done
+```
+
+```bash
+#!/bin/bash
+for s in SRR866997 SRR866998 SRR866999 SRR867000 SRR867001 SRR867002 SRR866991 SRR866992 SRR866993 SRR866994 SRR866995 SRR866996
+do 
+trim_galore -o /path/to/trim_galore_result/mm10/ $s.fastq
+wait
+done
 ```
 
 **Note**: `-o` (or `--outdir`) will create all output files in the specified output directory. 

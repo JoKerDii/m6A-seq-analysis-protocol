@@ -44,17 +44,17 @@ saveRDS(mod_annot, "/path/to/mod_annot.rds")
 ```R
 library(exomePeak2)
 set.seed(1)
-root = "/path/to/data/homo"
+root = "/path/to/homo_result"
 setwd(root)
 
-f1 = file.path(root, "SRR5978834_trimmed_s.bam")
-f2 = file.path(root, "SRR5978835_trimmed_s.bam")
-f3 = file.path(root, "SRR5978836_trimmed_s.bam")
+f1 = file.path(root, "SRR5978834_sorted.bam")
+f2 = file.path(root, "SRR5978835_sorted.bam")
+f3 = file.path(root, "SRR5978836_sorted.bam")
 IP_BAM = c(f1,f2,f3) 
 
-f1 = file.path(root, "SRR5978827_trimmed_s.bam")
-f2 = file.path(root, "SRR5978828_trimmed_s.bam")
-f3 = file.path(root, "SRR5978829_trimmed_s.bam")
+f1 = file.path(root, "SRR5978827_sorted.bam")
+f2 = file.path(root, "SRR5978828_sorted.bam")
+f3 = file.path(root, "SRR5978829_sorted.bam")
 INPUT_BAM = c(f1,f2,f3)
 
 f2 = "/path/to/mod_annot.rds"
@@ -62,6 +62,7 @@ MOD_ANNO_GRANGE <- readRDS(f2)
 exomePeak2(bam_ip = IP_BAM,
            bam_input = INPUT_BAM,
            genome = "hg19",
+           library_type = "1st_strand",
            paired_end = FALSE,
            mod_annot = MOD_ANNO_GRANGE)
 ```

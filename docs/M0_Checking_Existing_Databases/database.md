@@ -1,6 +1,6 @@
 # Checking Databases
 
-Check existing databases to obtain specific information about the datasets.
+Check existing databases to access data information.
 
 
 
