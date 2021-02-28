@@ -10,10 +10,6 @@ BiocManager::install(c("GenomicFeatures", "GenomicAlignments", "Rsamtools", "Gui
 devtools::install_github("NWPU-903PR/Funm6AViewer")
 ```
 
-
-
-
-
 # Reference
 
-[1] S.-Y. Zhang, S.-W. Zhang, X.-N. Fan, T. Zhang, J. Meng, and Y. Huang, "FunDMDeep-m6A: identification and prioritization of functional differential m6A methylation genes," Bioinformatics, vol. 35, no. 14, pp. i90-i98, 2019, doi: 10.1093/bioinformatics/btz316. [[paper](https://academic.oup.com/bioinformatics/article/35/14/i90/5529234?login=true)]
+[1] S.-Y. Zhang, S.-W. Zhang, X.-N. Fan, T. Zhang, J. Meng, and Y. Huang, "FunDMDeep-m6A: identification and prioritization of functional differential m6A methylation genes," Bioinformatics, vol. 35, no. 14, pp. i90-i98, 2019, doi: 10.1093/bioinformatics/btz316. [[paper](https://academic.oup.com/bioinformatics/article/35/14/i90/5529234?login=true)] 

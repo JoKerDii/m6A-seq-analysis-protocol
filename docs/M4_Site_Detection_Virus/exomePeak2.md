@@ -7,17 +7,17 @@ We are going to use this package for peak calling, finding enriched m6A sites on
 ```R
 library(exomePeak2)
 set.seed(1)
-root = "/path/to/data/HHV8"
+root = "/path/to/hhv8_result"
 setwd(root)
 
-f1 = file.path(root, "SRR5179446_sorted.bam")
-f2 = file.path(root, "SRR5179447_sorted.bam")
-f3 = file.path(root, "SRR5179448_sorted.bam")
+f1 = file.path(root, "SRR5978834_sorted.bam")
+f2 = file.path(root, "SRR5978835_sorted.bam")
+f3 = file.path(root, "SRR5978836_sorted.bam")
 IP_BAM = c(f1,f2,f3) 
 
-f1 = file.path(root, "SRR5978869_sorted.bam")
-f2 = file.path(root, "SRR5978870_sorted.bam")
-f3 = file.path(root, "SRR5978871_sorted.bam")
+f1 = file.path(root, "SRR5978827_sorted.bam")
+f2 = file.path(root, "SRR5978828_sorted.bam")
+f3 = file.path(root, "SRR5978829_sorted.bam")
 INPUT_BAM = c(f1,f2,f3)
 
 GENE_ANNO_GTF = file.path("/path/to/sequence.gff3")
