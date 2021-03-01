@@ -64,7 +64,11 @@ done
 
 The generated TDF files and BED file can then be visualized using IGV browser.
 
-![igv_app2](../assets/images/M3/igv_peak.png)
+![igv_app1](../assets/images/M3/igv_peak1.png)
+
+Annotated by an anti-sense gene:
+
+![igv_app_anti](../assets/images/M3/igv_peak_anti.png)
 
 
 

@@ -9,7 +9,6 @@
   - [Quality assessment](M1_Data_Preprocessing/FASTQC.md)
   - [Reads trimming](M1_Data_Preprocessing/Trim_Galore.md)
   - [Reads alignment](M1_Data_Preprocessing/Hisat2.md)
-  - [Quality assessment](M1_Data_Preprocessing/Trumpet.md)
 - M2. Differential Expression
   - [Transcript assembly and quantification](M2_Differential_Expression/StringTie.md)
   - [Differential expression](M2_Differential_Expression/Ballgown.md)
@@ -18,7 +17,6 @@
   - [Motif finding](M3_Site_Detection_Host/STREME.md)
   - [Distribution of m6A sites](M3_Site_Detection_Host/MetaTX.md)
   - [Visualization of reads](M3_Site_Detection_Host/IGV.md)
-  - [GO enrichment analysis](M3_Site_Detection_Host/DAVID.md)
   - [Annotation Web Server](M3_Site_Detection_Host/RNAmod.md)
 - M4. Site Detection - Virus
   - [m6A-seq data analysis](M4_Site_Detection_Virus/exomePeak2.md)
@@ -32,9 +30,5 @@
   - [Annotation Web Server](M5_Differential_Methylation/RNAmod.md)
 - M6. Reference based analysis
   - [m6A-seq data analysis](M6_Reference_Based_Analysis/exomePeak2.md)
-- M7. Network Analysis
-  - [Differential Expression](M7_Network_Analysis/Ballgown.md)
-  - [m6A-seq data analysis](M7_Network_Analysis/exomePeak2.md)
-  - [Network Analysis](M7_Network_Analysis/m6AFunViewer.md)
 - Appendix
 - **Project Documentation**

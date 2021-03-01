@@ -62,6 +62,12 @@ wait
 done
 ```
 
+For paired-end data, you need to add `--split-files` option in the `fastq-dump` command.
+
+```shell
+fastq-dump --split-files SRR866997
+```
+
 
 
 # Reference

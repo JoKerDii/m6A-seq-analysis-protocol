@@ -67,7 +67,7 @@ $ cat */summary.txt > ~/all/fastqc_summaries.txt
 $ cat ~/all/fastqc_summaries.txt
 ```
 
-
+For paired-end data, since the two reads of the pair are generated separately, trying to get statistics like per base sequence quality on the combined forward and reverse reads would make no sense. In this case, you may check quality by inputting BAM files.
 
 # Reference
 

@@ -6,9 +6,11 @@
 
 The generated TDF files and BED file can be visualized using IGV browser.
 
-![igv_app](../assets/images/M5/diff_peaks.png)
+![igv_app](../assets/images/M5/diff_peaks1.png)
 
+Annotated by an anti-sense gene:
 
+![igv_app_anti](../assets/images/M5/diff_peaks_anti.png)
 
 # Reference
 

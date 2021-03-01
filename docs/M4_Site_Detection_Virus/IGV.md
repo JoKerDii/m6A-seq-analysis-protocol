@@ -38,7 +38,7 @@ done
 
 The generated TDF files and BED file can then be visualized using IGV browser.
 
-![igv_app](../assets/images/M4/peaks_igv.png)
+![igv_app](../assets/images/M4/peaks_igv1.png)
 
 # Reference
 
