@@ -115,13 +115,13 @@ mv *.align_summary alignment_summary/
 * Also note that for paired end data, you need to modify the `hisat2` command as follows to get SAM file
 
 ```shell
-hisat2 -x genome --summary-file $s.m6A.align_summary -p 5 -U /path/to/trim_galore_result/SRR5978827_trimmed.fq -S /path/to/homo_result/SRR5978827.sam
+hisat2 -x genome --summary-file $s.m6A.align_summary -p 5 -1 /path/to/trim_galore_result/SRR5978827_trimmed_1.fq -2 /path/to/trim_galore_result/SRR5978827_trimmed_2.fq -S /path/to/homo_result/SRR5978827.sam
 ```
 
 or modify the `hisat2-samtools` combined command to directly get sorted BAM file
 
 ```shell
-hisat2 -x genome --summary-file SRR5978827.m6A.align_summary -p 5 -U /path/to/trim_galore_result/SRR5978827_trimmed.fq | samtools view -Su |samtools sort -o /path/to/homo_result/SRR5978827_sorted.bam
+hisat2 -x genome --summary-file SRR5978827.m6A.align_summary -p 5 -1 /path/to/trim_galore_result/SRR5978827_trimmed_1.fq -2 /path/to/trim_galore_result/SRR5978827_trimmed_2.fq | samtools view -Su |samtools sort -o /path/to/homo_result/SRR5978827_sorted.bam
 ```
 
 
