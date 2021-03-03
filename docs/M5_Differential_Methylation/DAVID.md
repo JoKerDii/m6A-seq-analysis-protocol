@@ -1,4 +1,4 @@
-# DAVID
+# Enriched biological processes regulated by differential expressed genes on hg19 genome.DAVID
 
 
 
@@ -23,6 +23,7 @@ library(readr)
 library(dplyr)
 chart = read_tsv("chart_diff.txt")
 
+# generate a figure for differential expressed genes
 generateFigure = function(chart, num, term = "GOTERM_BP_DIRECT"){
 
   p = selectPvalue(chart)
@@ -43,9 +44,63 @@ generateFigure = function(chart, num, term = "GOTERM_BP_DIRECT"){
 }
 
 generateFigure(chart, 30, term)
+
+
+# generate a figure for hyper/hypo genes
+chartp <- read_tsv("pos_david_mm.txt")
+chartn <- read_tsv("neg_david_mm.txt")
+chartp <- chartp %>% mutate(Effect = "hyper")
+chartn <- chartn %>% mutate(Effect = "hypo")
+charts <- rbind(chartp, chartn)
+
+generateFigure_hyper_hypo <- function(charts, term = "GOTERM_BP_DIRECT"){
+  
+  print(charts %>%
+          filter(Category == term & Effect == 'hyper') %>%
+          select(c("Term", "%", "PValue", "Effect")) %>%
+          rename("Ratio"=`%`) %>%
+          mutate(Term = as.factor(gsub("^.*?~", "",Term)), 
+                 Ratio = Ratio / 100) %>% nrow())
+  
+  frame_p <- as.data.frame(charts %>%
+    filter(Category == term & Effect == 'hyper') %>%
+    select(c("Term", "%", "PValue", "Effect")) %>%
+    rename("Ratio"=`%`) %>%
+    mutate(Term = as.factor(gsub("^.*?~", "",Term)), 
+           Ratio = Ratio / 100))[1:29,]
+  
+  print(charts %>%
+          filter(Category == term & Effect == 'hypo') %>%
+          select(c("Term", "%", "PValue", "Effect")) %>%
+          rename("Ratio"=`%`) %>%
+          mutate(Term = as.factor(gsub("^.*?~", "",Term)), 
+                 Ratio = Ratio / 100) %>% nrow())
+  
+  frame_n <- as.data.frame(charts %>%
+     filter(Category == term & Effect == 'hypo') %>%
+     select(c("Term", "%", "PValue", "Effect")) %>%
+     rename("Ratio"=`%`) %>%
+     mutate(Term = as.factor(gsub("^.*?~", "",Term)), 
+            Ratio = Ratio / 100))[1,]
+  
+  frame <- rbind(frame_p,frame_n)
+  
+  fig2 <- frame %>%
+    ggplot(aes(x=reorder(Term, -PValue),y=-log(PValue),fill = Effect)) +
+    geom_bar(stat="identity") +
+    coord_flip() + 
+    xlab("Gene Ontology: Biological Process")
+  
+  return(fig2)
+}
+
+generateFigure_hyper_hypo(charts)
 ```
 
+Enriched biological processes regulated by differential expressed genes on hg19 genome.
 
+![GO_bar_plot](../assets/images/M5/homo_pos_neg.png)
 
-![GO_bar_plot](../assets/images/M5/GO_barplot_diff.png)
+Enriched biological processes regulated by differential expressed genes on mm10 genome.
 
+![GO_bar_plot](../assets/images/M5/mm_pos_neg.png)
