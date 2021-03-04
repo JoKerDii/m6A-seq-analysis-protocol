@@ -16,10 +16,6 @@ Some of the figures about modification site information are displayed below:
 
 ![RNAmod1](../assets/images/M5/RNAmod4.png)
 
-* Enriched motifs
-
-![RNAmod1](../assets/images/M5/RNAmod3.png)
-
 
 
 # Reference

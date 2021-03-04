@@ -14,7 +14,7 @@
   - [Differential expression](M2_Differential_Expression/Ballgown.md)
 - M3. Site Detection - Host
   - [m6A-seq data analysis ](M3_Site_Detection_Host/exomePeak2.md)
-  - [Motif finding](M3_Site_Detection_Host/STREME.md)
+  - [Motif finding](M3_Site_Detection_Host/Homer.md)
   - [Distribution of m6A sites](M3_Site_Detection_Host/MetaTX.md)
   - [Visualization of reads](M3_Site_Detection_Host/IGV.md)
   - [Annotation Web Server](M3_Site_Detection_Host/RNAmod.md)
@@ -23,7 +23,6 @@
   - [Visualization of reads](M4_Site_Detection_Virus/IGV.md)
 - M5. Differential Methylation
   - [m6A-seq data analysis](M5_Differential_Methylation/exomePeak2.md)
-  - [Motif finding](M5_Differential_Methylation/STREME.md)
   - [Distribution of m6A sites](M5_Differential_Methylation/MetaTX.md)
   - [Visualization of reads](M5_Differential_Methylation/IGV.md)
   - [GO enrichment analysis](M5_Differential_Methylation/DAVID.md)

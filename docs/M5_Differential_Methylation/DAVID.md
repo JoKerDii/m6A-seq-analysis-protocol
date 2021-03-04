@@ -1,4 +1,6 @@
-# Enriched biological processes regulated by differential expressed genes on hg19 genome.DAVID
+# DAVID
+
+The **D**atabase for **A**nnotation, **V**isualization and **I**ntegrated **D**iscovery (**DAVID**) is a website providing a comprehensive set of functional annotation tools for investigators to understand biological meaning behind large list of genes [1]. We are going to use this tool to discover enriched gene functions.
 
 
 
@@ -104,3 +106,7 @@ Enriched biological processes regulated by differential expressed genes on hg19 
 Enriched biological processes regulated by differential expressed genes on mm10 genome.
 
 ![GO_bar_plot](../assets/images/M5/mm_pos_neg.png)
+
+# Reference
+
+[1] X. Jiao, B. T. Sherman, D. W. Huang, R. Stephens, M. W. Baseler, H. C. Lane et al., "DAVID-WS: a stateful web service to facilitate gene/protein list analysis," (in eng), Bioinformatics (Oxford, England), vol. 28, no. 13, pp. 1805-1806, 2012, doi: 10.1093/bioinformatics/bts251.[[paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3381967/?report=abstract)]
