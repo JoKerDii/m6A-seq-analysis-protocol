@@ -2,9 +2,33 @@
 
 Homer is a software for motif discovery and next-gen sequencing analysis. We are going to use this tool to find m6A motifs within peaks that has been found.
 
+## Convert BED to FASTA
+
+### 1. Install bedtools
+
+```shell
+# Download and config
+$ wget https://github.com/arq5x/bedtools2/releases/download/v2.30.0/bedtools-2.30.0.tar.gz
+$ tar -zxvf bedtools-2.30.0.tar.gz
+$ cd bedtools2
+$ make
+$ export PATH=$PATH:/path/to/bedtools2/bin
+
+# Verify installation
+$ bedtools --version
+```
+
+### 2. Convert BED to FASTA
+
+```shell
+$ bedtools getfasta -s -fi /path/to/genome.fa -bed /path/to/Mod.bed -split -fo mod.fa
+```
+
+The "mod.bed" file is generated from exomePeak2 package, and the "geneme.fa" is the whole genome of hg19 which has been downloaded previously.
 
 
-## Installation
+
+## Install Homer
 
 ```shell
 # Download and install following the instruction: http://homer.ucsd.edu/homer/introduction/install.html
@@ -25,12 +49,12 @@ $ findMotifs.pl
 ## Find Motifs
 
 ```shell
-$ findMotifsGenome.pl Mod.bed /path/to/hg19_genome.fa MotifOutput -rna -p 10 -len 5,6
+$ findMotifs.pl mod.fa fasta /path/to/MotifOutput -rna -p 10 -len 5,6
 ```
 
 The motifs enriched in peaks on hg19 transcripts.
 
-<img src="../assets/images/M3/hg19_motif_homer.png" alt="homer_hg19_motifs" style="zoom:96%;" />
+![homer_homo_motifs](../assets/images/M3/hg19_motif_homer.png)
 
 The motifs enriched in peaks on mm10 transcripts.
 
