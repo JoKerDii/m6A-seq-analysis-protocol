@@ -20,7 +20,7 @@ library(rtracklayer)
 
 # Import BED file from exomePeak2
 gr_obj =  import("DiffMod.bed")
-end(ranges(gr_obj)) <- start(ranges(gr_obj))
+gr_obj = resize(gr_obj, width = 1, fix = "center")
 
 # Download information about mRNA components
 txdb <- TxDb.Hsapiens.UCSC.hg19.knownGene

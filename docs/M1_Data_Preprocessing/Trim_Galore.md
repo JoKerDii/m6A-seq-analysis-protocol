@@ -37,7 +37,7 @@ In this procedure, first, low-quality base calls are trimmed off from the 3' end
 #!/bin/bash
 for s in SRR5978827 SRR5978828 SRR5978829 SRR5978834 SRR5978835 SRR5978836 SRR5978869 SRR5978870 SRR5978871 SRR5179446 SRR5179447 SRR5179448
 do 
-trim_galore -o /path/to/trim_galore_result/ $s.fastq
+trim_galore -o /path/to/trim_galore_result/ /path/to/raw_data/homo/$s.fastq
 wait
 done
 ```
@@ -46,7 +46,7 @@ done
 #!/bin/bash
 for s in SRR866997 SRR866998 SRR866999 SRR867000 SRR867001 SRR867002 SRR866991 SRR866992 SRR866993 SRR866994 SRR866995 SRR866996
 do 
-trim_galore -o /path/to/trim_galore_result/ $s.fastq
+trim_galore -o /path/to/trim_galore_result/ /path/to/raw_data/mm10/$s.fastq
 wait
 done
 ```

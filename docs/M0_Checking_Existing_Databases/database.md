@@ -1,6 +1,6 @@
 # Checking Databases
 
-Check existing databases to access data information.
+By checking the following databases before analyzing the data of interest, we could have a basic understanding of the data based on estimated quantitative profiles, conservation, biological functions, annotation, and disease association of epi-transcriptome.
 
 
 

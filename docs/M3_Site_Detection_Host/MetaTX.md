@@ -32,7 +32,7 @@ library(rtracklayer)
 
 # Import BED file from exomePeak2
 gr_obj =  import("Mod.bed")
-end(ranges(gr_obj)) <- start(ranges(gr_obj))
+gr_obj = resize(gr_obj, width = 1, fix = "center")
 
 # Download information about mRNA components
 txdb <- TxDb.Hsapiens.UCSC.hg19.knownGene
@@ -53,7 +53,6 @@ p1 <-  metaTXplot(remap_results_m6A_1,
                   legend = 'absolute',
                   type = 'absolute'
 )
-
 p2 <-  metaTXplot(remap_results_m6A_1,
                   num_bin              = 10,
                   includeNeighborDNA   = TRUE,
@@ -62,7 +61,6 @@ p2 <-  metaTXplot(remap_results_m6A_1,
                   legend = 'absolute',
                   type = 'absolute'
 )
-
 p3 <-  metaTXplot(remap_results_m6A_1,
                   num_bin              = 10,
                   includeNeighborDNA   = TRUE,
@@ -71,7 +69,6 @@ p3 <-  metaTXplot(remap_results_m6A_1,
                   legend = 'relative',
                   type = 'relative'
 )
-
 p4 <-  metaTXplot(remap_results_m6A_1,
                   num_bin              = 10,
                   includeNeighborDNA   = TRUE,
@@ -80,13 +77,11 @@ p4 <-  metaTXplot(remap_results_m6A_1,
                   legend = 'relative',
                   type = 'relative'
 )
-
 ggdraw() +
   draw_plot(p1, 0, .5, .5, .5) +
   draw_plot(p2, .5, .5, .5, .5) +
   draw_plot(p3, 0, 0, .5, .5) +     
   draw_plot(p4, .5, 0, .5, .5)
-
 ```
 
 

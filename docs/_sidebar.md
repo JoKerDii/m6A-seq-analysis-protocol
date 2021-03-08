@@ -5,15 +5,15 @@
 - M0. Checking Databases
   - [Databases](M0_Checking_Existing_Databases/database.md)
 - M1. Data Preprocessing
-  - [Obtaining GEO data](M1_Data_Preprocessing/SRA_toolkit.md)
+  - [Download GEO data](M1_Data_Preprocessing/SRA_toolkit.md)
   - [Quality assessment](M1_Data_Preprocessing/FASTQC.md)
   - [Reads trimming](M1_Data_Preprocessing/Trim_Galore.md)
   - [Reads alignment](M1_Data_Preprocessing/Hisat2.md)
 - M2. Differential Expression
-  - [Transcript assembly and quantification](M2_Differential_Expression/StringTie.md)
+  - [Transcript assembly & quantification](M2_Differential_Expression/StringTie.md)
   - [Differential expression](M2_Differential_Expression/Ballgown.md)
 - M3. Site Detection - Host
-  - [m6A-seq data analysis ](M3_Site_Detection_Host/exomePeak2.md)
+  - [m6A-seq data analysis](M3_Site_Detection_Host/exomePeak2.md)
   - [Motif finding](M3_Site_Detection_Host/Homer.md)
   - [Distribution of m6A sites](M3_Site_Detection_Host/MetaTX.md)
   - [Visualization of reads](M3_Site_Detection_Host/IGV.md)

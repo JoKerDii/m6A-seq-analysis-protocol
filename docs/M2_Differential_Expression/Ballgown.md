@@ -15,7 +15,7 @@ Ballgown requires three pre-processing steps:
 An example of the working directory:
 
 ```markdown
-homo_tables/
+stringtie_homo/
     SRR5978827/
         e2t.ctab
         e_data.ctab
@@ -35,7 +35,7 @@ Create an R script `load_bg.R` for loading ballgown object:
 
 ```R
 library(ballgown)
-bg <- ballgown(dataDir="/path/to/homo_tables", samplePattern='SRR', meas='all')
+bg <- ballgown(dataDir="/path/to/stringtie_homo", samplePattern='SRR', meas='all')
 save(bg, file='bg.rda')
 ```
 
@@ -63,8 +63,6 @@ bg_table = texpr(bg, 'all')
 bg_gene_names = unique(bg_table[, 9:10])
 
 # Add pData
-# pData should hold a data frame of phenotype information for the samples in the experiment, 
-# and be added during ballgown object construction. It can also be added later
 group <- c(rep("iSLK-KSHV_BAC16-48hr-input", 3), rep("iSLK-uninf-input", 3))
 pData(bg) = data.frame(id=sampleNames(bg), group=group)
 
@@ -73,7 +71,7 @@ results_transcripts = stattest(bg, feature="transcript", covariate="group", getF
 results_genes = stattest(bg, feature="gene", covariate="group", getFC=TRUE, meas="FPKM")
 results_genes = merge(results_genes, bg_gene_names, by.x=c("id"), by.y=c("gene_id"))
 
-# Filter low-abundance genes. Here we remove all transcripts with a variance across the samples of less than one
+# Filter low-abundance genes. 
 bg_filt = subset(bg,"rowVars(texpr(bg)) > 1", genomesubset=TRUE)
 
 # Load all attributes including gene name
@@ -89,6 +87,12 @@ results_genes = merge(results_genes, bg_filt_gene_names, by.x=c("id"), by.y=c("g
 sig_transcripts = subset(results_transcripts, results_transcripts$pval<0.05)
 sig_genes = subset(results_genes, results_genes$pval<0.05)
 ```
+
+Note that `pData` should hold a data frame of phenotype information for the samples in the experiment, and be added during ballgown object construction. It can also be added later. 
+
+Also note that you can remove all transcripts with a low variance across the samples before differential analysis.
+
+
 
 ## Results
 

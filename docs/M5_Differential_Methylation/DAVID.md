@@ -49,13 +49,13 @@ generateFigure(chart, 30, term)
 
 
 # generate a figure for hyper/hypo genes
-chartp <- read_tsv("pos_david_mm.txt")
-chartn <- read_tsv("neg_david_mm.txt")
-chartp <- chartp %>% mutate(Effect = "hyper")
-chartn <- chartn %>% mutate(Effect = "hypo")
-charts <- rbind(chartp, chartn)
+chartp = read_tsv("pos_david_mm.txt")
+chartn = read_tsv("neg_david_mm.txt")
+chartp = chartp %>% mutate(Effect = "hyper")
+chartn = chartn %>% mutate(Effect = "hypo")
+charts = rbind(chartp, chartn)
 
-generateFigure_hyper_hypo <- function(charts, term = "GOTERM_BP_DIRECT"){
+generateFigure_hyper_hypo = function(charts, term = "GOTERM_BP_DIRECT"){
   
   print(charts %>%
           filter(Category == term & Effect == 'hyper') %>%
@@ -64,7 +64,7 @@ generateFigure_hyper_hypo <- function(charts, term = "GOTERM_BP_DIRECT"){
           mutate(Term = as.factor(gsub("^.*?~", "",Term)), 
                  Ratio = Ratio / 100) %>% nrow())
   
-  frame_p <- as.data.frame(charts %>%
+  frame_p = as.data.frame(charts %>%
     filter(Category == term & Effect == 'hyper') %>%
     select(c("Term", "%", "PValue", "Effect")) %>%
     rename("Ratio"=`%`) %>%
@@ -78,16 +78,16 @@ generateFigure_hyper_hypo <- function(charts, term = "GOTERM_BP_DIRECT"){
           mutate(Term = as.factor(gsub("^.*?~", "",Term)), 
                  Ratio = Ratio / 100) %>% nrow())
   
-  frame_n <- as.data.frame(charts %>%
+  frame_n = as.data.frame(charts %>%
      filter(Category == term & Effect == 'hypo') %>%
      select(c("Term", "%", "PValue", "Effect")) %>%
      rename("Ratio"=`%`) %>%
      mutate(Term = as.factor(gsub("^.*?~", "",Term)), 
             Ratio = Ratio / 100))[1,]
   
-  frame <- rbind(frame_p,frame_n)
+  frame = rbind(frame_p,frame_n)
   
-  fig2 <- frame %>%
+  fig2 = frame %>%
     ggplot(aes(x=reorder(Term, -PValue),y=-log(PValue),fill = Effect)) +
     geom_bar(stat="identity") +
     coord_flip() + 

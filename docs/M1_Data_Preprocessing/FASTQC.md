@@ -1,6 +1,6 @@
 # Pre-alignment Quality Assessment with FastQC
 
-The first step of m6A-seq analysis is to assess the quality of the sequence reads in FASTQ files from the sequencing facility. [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) is a quality control application for high-throughput sequencing data. By using FastQC, we could be aware of any problems in raw sequence data before moving on to the next analysis. 
+It is always necessary to assess the quality of the sequence reads in FASTQ files from the sequencing facility. [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) is a quality control application for high-throughput sequencing data. By using FastQC, we could be aware of any problems in raw sequence data before moving on to the next step. 
 
 
 
@@ -27,10 +27,10 @@ $ fastqc -help
 
 ```shell
 # Examine the quality of one FastQ file:
-$ fastqc -o /path/to/fastqc_result/ /path/to/fastqFiles/SRR5978869.fastq
+$ fastqc -o /path/to/fastqc_result/ /path/to/raw_data/homo/SRR5978869.fastq
 
 # or examine the quality of multiple FastQ files:
-$ fastqc -o /path/to/fastqc_result/ -t 6 /path/to/fastqFiles/*.fastq
+$ fastqc -o /path/to/fastqc_result/ -t 6 /path/to/raw_data/homo/*.fastq
 ```
 
 **Note**: `-o` (or `--outdir`) will create all output files in the specified output directory. `-t` specifies the number of files / threads that can be processed in parallel.
