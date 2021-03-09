@@ -4,7 +4,7 @@
 
 Ballgown requires three pre-processing steps:
 
-1. RNA-Seq reads should be aligned to a reference genome. (**HISAT2**)
+1. MeRIP-Seq reads should be aligned to a reference genome. (**HISAT2**)
 2. A transcriptome should be assembled, or a reference transcriptome should be downloaded. (**StringTie**)
 3. Expression for the features (transcript, exon, and intron junctions) in the transcriptome should be estimated in a Ballgown readable format. (**StringTie**)
 
@@ -55,15 +55,20 @@ setwd("/path/to/ballgown/")
 library(ballgown)
 library(genefilter)
 
-# Read in the data from StringTie
-load("bg.rda")
+# Load data
+bg = ballgown(dataDir="/path/to/stringtie_homo", samplePattern='SRR', meas='all')
+# Save data for backup
+save(bg, file='bg.rda')
 
 # Load all attributes and gene names
 bg_table = texpr(bg, 'all')
 bg_gene_names = unique(bg_table[, 9:10])
 
-# Add pData
-group <- c(rep("iSLK-KSHV_BAC16-48hr-input", 3), rep("iSLK-uninf-input", 3))
+# Get gene expression data frame 
+gene_expression = as.data.frame(gexpr(bg))
+
+# Add pData specifying groups
+group = c(rep("iSLK-KSHV_BAC16-48hr-input", 3), rep("iSLK-uninf-input", 3))
 pData(bg) = data.frame(id=sampleNames(bg), group=group)
 
 # Perform differential expression (DE) analysis with no filtering
@@ -71,7 +76,7 @@ results_transcripts = stattest(bg, feature="transcript", covariate="group", getF
 results_genes = stattest(bg, feature="gene", covariate="group", getFC=TRUE, meas="FPKM")
 results_genes = merge(results_genes, bg_gene_names, by.x=c("id"), by.y=c("gene_id"))
 
-# Filter low-abundance genes. 
+# Filter low-abundance genes.
 bg_filt = subset(bg,"rowVars(texpr(bg)) > 1", genomesubset=TRUE)
 
 # Load all attributes including gene name
@@ -84,9 +89,79 @@ results_genes = stattest(bg_filt, feature="gene", covariate="group", getFC=TRUE,
 results_genes = merge(results_genes, bg_filt_gene_names, by.x=c("id"), by.y=c("gene_id"))
 
 # Identify the significant genes with p-value < 0.05
-sig_transcripts = subset(results_transcripts, results_transcripts$pval<0.05)
-sig_genes = subset(results_genes, results_genes$pval<0.05)
+sig_transcripts = subset(results_transcripts, results_transcripts$pval < 0.05)
+sig_genes = subset(results_genes, results_genes$pval < 0.05)
+
+# Visualization1: view the range of values and general distribution of FPKM values
+FPKM_dist = function(gene_expression) {
+  log_fpkm = log2(gene_expression+1)
+  fpkm_long = gather(data.frame(log_fpkm), "Sample", "log2(FPKM+1)")
+  index_table = pData(bg)
+  index_table$id = paste("FPKM.", index_table$id, sep='')
+  colnames(index_table) = c("Sample", "Group")
+  fpkm_long = left_join(fpkm_long, index_table, by = "Sample")
+  p = ggplot(fpkm_long, aes(x=Sample, y=`log2(FPKM+1)`, fill = Group)) + 
+    geom_boxplot() + coord_flip() +
+    labs(title = "log2(FPKM+1) for Each Sample") +
+    theme_bw() + 
+    theme(plot.title = element_text( size=18, vjust=0.5, hjust=0.5),
+          axis.title.x = element_text(size=15, vjust=0.5), 
+          axis.title.y = element_text( size=15, vjust=0.5),
+          axis.text.x = element_text(size=12, colour="black"),
+          axis.text.y = element_text(size=12, colour="black"),
+          legend.text = element_text(size=12, colour="black"),
+          legend.title = element_text(size=12, colour="black"),
+          plot.caption = element_text(size=12, colour="gray75", face="italic", hjust = 1, vjust = 1))
+  return(p)
+}
+p1 = FPKM_dist(gene_expression) 
+
+# Visualization2: heat map of differential expression
+heatmap = function(gene_expression, results_genes){
+  library(RColorBrewer)
+  Colors=brewer.pal(11,"Spectral")
+  results_genes[,"de"] = log2(results_genes[,"fc"])
+  sigpi = which(results_genes[,"pval"]<0.05)
+  topn = order(abs(results_genes[sigpi,"fc"]), decreasing=TRUE)[1:25]
+  topn = order(results_genes[sigpi,"qval"])[1:25]
+  sigp = results_genes[sigpi,]
+  sigde = which(abs(sigp[,"de"]) >= 2)
+  sig_tn_de = sigp[sigde,]
+  mydist=function(c) {dist(c,method="euclidian")}
+  myclust=function(c) {hclust(c,method="average")}
+  main_title="Heatmap of Differential Expression"
+  par(cex.main=0.8)
+  sig_genes_de=sig_tn_de[,"id"]
+  sig_gene_names_de=sig_tn_de[,"gene_name"]
+  data=log2(as.matrix(gene_expression[as.vector(sig_genes_de),])+1)
+  p = heatmap.2(data, 
+                 hclustfun=myclust, 
+                 distfun=mydist, 
+                 na.rm = TRUE, 
+                 scale="none", 
+                 dendrogram="both", 
+                 margins=c(7,5),
+                 Rowv=TRUE, Colv=TRUE, 
+                 symbreaks=FALSE, key=TRUE, symkey=FALSE, 
+                 density.info="none", trace="none", 
+                 main=main_title, 
+                 cexRow=0.8, cexCol=0.8, 
+                 labRow=sig_gene_names_de,
+                 # col=rev(heat.colors(75)),
+                 col=Colors)
+  return(p)
+}
+p2 = heatmap(gene_expression, results_genes)
+
 ```
+
+A barplot shows the range and general distribution of FPKM values: 
+
+![ballgown_viz2](..\assets\images\M2\ballgown_viz2.png)
+
+A heat map shows the significant differential expressed genes among all samples:
+
+![ballgown_viz1](..\assets\images\M2\ballgown_viz1.png)
 
 Note that `pData` should hold a data frame of phenotype information for the samples in the experiment, and be added during ballgown object construction. It can also be added later. 
 
