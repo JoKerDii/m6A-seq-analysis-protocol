@@ -8,7 +8,7 @@
 
 ### 1. Download and Convert Basic Site Information
 
-Download single based RNA modification annotation of m6A on human genome from [m6A-Atlas database](http://10.7.6.58/m6A-Atlas/download.html), which should be tabular data in a txt file. Convert tabular data to genomic ranges by:
+Download single base RNA modification annotation of m6A on human genome from [m6A-Atlas database](http://10.7.6.58/m6A-Atlas/download.html), which should be tabular data in a txt file. Convert tabular data to genomic ranges by:
 
 ```R
 library(readr)

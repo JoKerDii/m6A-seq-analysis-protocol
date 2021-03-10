@@ -99,11 +99,11 @@ generateFigure_hyper_hypo = function(charts, term = "GOTERM_BP_DIRECT"){
 generateFigure_hyper_hypo(charts)
 ```
 
-Enriched biological processes regulated by differential expressed genes on hg19 genome.
+Enriched biological processes regulated by differential methylated genes on hg19 genome.
 
 ![GO_bar_plot](../assets/images/M5/homo_pos_neg.png)
 
-Enriched biological processes regulated by differential expressed genes on mm10 genome.
+Enriched biological processes regulated by differential methylated genes on mm10 genome.
 
 ![GO_bar_plot](../assets/images/M5/mm_pos_neg.png)
 

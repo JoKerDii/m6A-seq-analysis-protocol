@@ -77,6 +77,25 @@ wait
 done
 mkdir alignment_summary
 mv *.align_summary alignment_summary/
+
+
+#!/bin/bash
+# Build genome index
+cd /path/to/homo/ 
+hisat2-build -p 20 /path/to/hg19_genome.fa genome
+hisat_samtool(){
+hisat2 -x genome --summary-file “$1”.m6A.align_summary -p 5 -U /path/to/trim_galore_result/“$1”_trimmed.fq | samtools view -Su |samtools sort -o /path/to/homo_result/“$1”_sorted.bam
+samtools index /path/to/homo_result/“$1”_sorted.bam
+}
+export -f hisat_samtool
+# Reads alignment
+for s in SRR5978827 SRR5978828 SRR5978829 SRR5978834 SRR5978835 SRR5978836 SRR5978869 SRR5978870 SRR5978871 SRR5179446 SRR5179447 SRR5179448
+do 
+hisat_samtool ${s}
+wait
+mkdir alignment_summary
+mv *.align_summary alignment_summary/
+
 ```
 
 ```bash

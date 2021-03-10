@@ -64,4 +64,4 @@ The motifs enriched in peaks on mm10 transcripts.
 
 # Reference
 
-[1] Duttke SH, Chang MW, Heinz S, Benner C. Identification and dynamic quantification of regulatory elements using total RNA. Genome Res. 2019 Nov;29(11):1836-1846. doi: 10.1101/gr.253492.119. Epub 2019 Oct 24. PMID: 31649059; PMCID: PMC6836739. [[paper](https://genome.cshlp.org/content/early/2019/10/24/gr.253492.119.abstract)]
+[1] S. Heinz, C. Benner, N. Spann, E. Bertolino, Y. C. Lin, P. Laslo et al., "Simple combinations of lineage-determining transcription factors prime cis-regulatory elements required for macrophage and B cell identities," Molecular cell, vol. 38, no. 4, pp. 576-589, 2010. [[paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4763482/)]
