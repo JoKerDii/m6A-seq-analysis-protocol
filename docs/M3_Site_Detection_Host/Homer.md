@@ -49,8 +49,10 @@ $ findMotifs.pl
 ## Find Motifs
 
 ```shell
-$ findMotifs.pl mod.fa fasta /path/to/MotifOutput -rna -p 10 -len 5,6
+$ findMotifsGenome.pl Mod.bed /path/to/hg19_genome.fa /path/to/MotifOutput -rna -p 10 -len 5,6
 ```
+
+Note that Homer can analyze strand-specific genomic regions for motifs by running `findMotifsGenome.pl`  with an `rna` option.
 
 The motifs enriched in peaks on hg19 transcripts.
 
