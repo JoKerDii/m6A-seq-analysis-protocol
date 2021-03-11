@@ -65,50 +65,16 @@ Getting sorted BAM and index:
 
 ```bash
 #!/bin/bash
-Data="/path/to/trim_galore_result"
-Output="/path/to/homo_result"
-
 cd /path/to/homo/ # where storing index
-for s in SRR5978827 SRR5978828 SRR5978829 SRR5978834 SRR5978835 SRR5978836 SRR5978869 SRR5978870 SRR5978871 SRR5179446 SRR5179447 SRR5179448
-do 
-hisat2 -x genome --summary-file $s.m6A.align_summary -p 5 -U $Data/${s}_trimmed.fq | samtools view -Su |samtools sort -o $Output/${s}_sorted.bam
-samtools index $Output/${s}_sorted.bam
-wait
-done
-mkdir alignment_summary
-mv *.align_summary alignment_summary/
-
-
-#!/bin/bash
-# Build genome index
-cd /path/to/homo/ 
-hisat2-build -p 20 /path/to/hg19_genome.fa genome
 hisat_samtool(){
 hisat2 -x genome --summary-file “$1”.m6A.align_summary -p 5 -U /path/to/trim_galore_result/“$1”_trimmed.fq | samtools view -Su |samtools sort -o /path/to/homo_result/“$1”_sorted.bam
 samtools index /path/to/homo_result/“$1”_sorted.bam
 }
 export -f hisat_samtool
-# Reads alignment
+
 for s in SRR5978827 SRR5978828 SRR5978829 SRR5978834 SRR5978835 SRR5978836 SRR5978869 SRR5978870 SRR5978871 SRR5179446 SRR5179447 SRR5179448
 do 
 hisat_samtool ${s}
-wait
-mkdir alignment_summary
-mv *.align_summary alignment_summary/
-
-```
-
-```bash
-#!/bin/bash
-Data="/path/to/trim_galore_result"
-Output="/path/to/mm10_result"
-
-cd /path/to/mm10/ # where storing index
-for s in SRR866997 SRR866998 SRR866999 SRR867000 SRR867001 SRR867002 SRR866991 SRR866992 SRR866993 SRR866994 SRR866995 SRR866996
-do 
-hisat2 -x genome --summary-file $s.m6A.align_summary -p 5 -U $Data/${s}_trimmed.fq | samtools view -Su |samtools sort -o $Output/${s}_sorted.bam
-samtools index $Output/${s}_sorted.bam
-wait
 done
 mkdir alignment_summary
 mv *.align_summary alignment_summary/
@@ -116,15 +82,33 @@ mv *.align_summary alignment_summary/
 
 ```bash
 #!/bin/bash
-Data="/path/to/trim_galore_result"
-Output="/path/to/hhv8_result"
+cd /path/to/mm10/ # where storing index
+hisat_samtool(){
+hisat2 -x genome --summary-file “$1”.m6A.align_summary -p 5 -U /path/to/trim_galore_result/“$1”_trimmed.fq | samtools view -Su |samtools sort -o /path/to/mm10_result/“$1”_sorted.bam
+samtools index /path/to/mm10_result/“$1”_sorted.bam
+}
+export -f hisat_samtool
 
+for s in SRR866997 SRR866998 SRR866999 SRR867000 SRR867001 SRR867002 SRR866991 SRR866992 SRR866993 SRR866994 SRR866995 SRR866996
+do 
+hisat_samtool ${s}
+done
+mkdir alignment_summary
+mv *.align_summary alignment_summary/
+```
+
+```bash
+#!/bin/bash
 cd /path/to/hhv8/ # where storing index
+hisat_samtool(){
+hisat2 -x genome --summary-file “$1”.m6A.align_summary -p 5 -U /path/to/trim_galore_result/“$1”_trimmed.fq | samtools view -Su |samtools sort -o /path/to/hhv8_result/“$1”_sorted.bam
+samtools index /path/to/hhv8_result/“$1”_sorted.bam
+}
+export -f hisat_samtool
+
 for s in SRR5978827 SRR5978828 SRR5978829 SRR5978834 SRR5978835 SRR5978836 SRR5978869 SRR5978870 SRR5978871 SRR5179446 SRR5179447 SRR5179448
 do 
-hisat2 -x genome --summary-file $s.m6A.align_summary -p 5 -U $Data/${s}_trimmed.fq | samtools view -Su |samtools sort -o $Output/${s}_sorted.bam
-samtools index $Output/${s}_sorted.bam
-wait
+hisat_samtool ${s}
 done
 mkdir alignment_summary
 mv *.align_summary alignment_summary/

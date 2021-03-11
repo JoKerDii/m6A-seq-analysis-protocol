@@ -27,27 +27,27 @@ Run with the downloaded gene annotation:
 
 ```bash
 #!/bin/bash
-annotation = /path/to/hg19_annotation.gff
-data = /path/to/homo_result/
-output = /path/to/stringtie_homo/
+stringTie1(){
+  stringtie /path/to/homo_result/"$1"_sorted.bam -p 20 -o /path/to/stringtie_homo/"$1".gtf -G /path/to/hg19_annotation.gff
+}
+export -f stringTie1
 
 for s in SRR5978827 SRR5978828 SRR5978829 SRR5978834 SRR5978835 SRR5978836 SRR5978869 SRR5978870 SRR5978871 SRR5179446 SRR5179447 SRR5179448
 do 
-stringtie $data/${s}_sorted.bam -p 20 -o $output/${s}.gtf -G $annotation
-wait
+stringTie1 ${s}
 done
 ```
 
 ```bash
 #!/bin/bash
-annotation = /path/to/mm10_annotation.gff
-data = /path/to/mm10_result/
-output = /path/to/stringtie_mm10/
+stringTie1(){
+  stringtie /path/to/mm10_result/"$1"_sorted.bam -p 20 -o /path/to/stringtie_mm10/"$1".gtf -G /path/to/mm10_annotation.gff
+}
+export -f stringTie1
 
 for s in SRR866997 SRR866998 SRR866999 SRR867000 SRR867001 SRR867002 SRR866991 SRR866992 SRR866993 SRR866994 SRR866995 SRR866996
 do 
-stringtie $data/${s}_sorted.bam -p 20 -o $output/${s}.gtf -G $annotation
-wait
+stringTie1 ${s}
 done
 ```
 
@@ -72,29 +72,31 @@ Estimate transcript abundances and generate read coverage tables for Ballgown. N
 
 ```bash
 #!/bin/bash
-data = /path/to/homo_result/
-output =  /path/to/stringtie_homo/
+stringTie2(){
+stringtie /path/to/homo_result/“$1”_sorted.bam -eB -p 20 -G /path/to/stringtie_homo/homo_stringtie_merged.gtf -o /path/to/stringtie_homo/“$1”.gtf
+}
+export -f stringTie2
 
 for s in SRR5978827 SRR5978828 SRR5978829 SRR5978834 SRR5978835 SRR5978836 SRR5978869 SRR5978870 SRR5978871 SRR5179446 SRR5179447 SRR5179448
 do 
 mkdir $s
 cd $s
-stringtie $data/${s}_sorted.bam -eB -p 20 -G $output/homo_stringtie_merged.gtf -o $output/$s.gtf
-wait
+stringTie2 ${s}
 done
 ```
 
 ```bash
 #!/bin/bash
-data = /path/to/mm10_result/
-output = /path/to/stringtie_mm10/
+stringTie2(){
+stringtie /path/to/mm10_result/“$1”_sorted.bam -eB -p 20 -G /path/to/stringtie_mm10/mm10_stringtie_merged.gtf -o /path/to/stringtie_mm10/“$1”.gtf
+}
+export -f stringTie2
 
 for s in SRR866997 SRR866998 SRR866999 SRR867000 SRR867001 SRR867002 SRR866991 SRR866992 SRR866993 SRR866994 SRR866995 SRR866996
 do 
 mkdir $s
 cd $s
-stringtie $data/${s}_sorted.bam -eB -p 20 -G $output/mm10_stringtie_merged.gtf -o $output/$s.gtf
-wait
+stringTie2 ${s}
 done
 ```
 
