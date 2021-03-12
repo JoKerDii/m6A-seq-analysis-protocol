@@ -1,0 +1,1 @@
+cmd = ./data/results/gWmHXSBcyrp2YYtX/querySeqs_group1.fa fasta ./data/results/gWmHXSBcyrp2YYtX/homer_group1 -fasta ./data/results/gWmHXSBcyrp2YYtX/controlSeqs_group1.fa -nogo -rna -p 8 -S 10 -len 6,7,8

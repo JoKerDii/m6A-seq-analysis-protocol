@@ -1,0 +1,38 @@
+Found <a href=./data/results/gWmHXSBcyrp2YYtX//gWmHXSBcyrp2YYtX.upload.bed target=_blank>8637</a> valid records and <a href=./data/results/gWmHXSBcyrp2YYtX//gWmHXSBcyrp2YYtX.bad.bed target=_blank>0</a> non-valid records in <a href=./data/results/gWmHXSBcyrp2YYtX//gWmHXSBcyrp2YYtX.bed target=_blank>8862</a> total bed records for gWmHXSBcyrp2YYtX.	2021-02-25 12:28:01
+
+Reading annotation	2021-02-25 12:28:34
+
+Peak annotating ...	2021-02-25 12:29:46
+
+Exon length stat ...	2021-02-25 12:33:51
+
+Wrinting gene matrix ...	2021-02-25 12:33:54
+
+Wrinting peak matrix ...	2021-02-25 12:33:54
+
+GO enriching ...	2021-02-25 12:33:55
+
+Pathway enriching ...	2021-02-25 12:33:55
+
+Feature stat ...	2021-02-25 12:33:55
+
+Gene bio-types distribution ...	2021-02-25 12:33:55
+
+Features coverage profiling ...	2021-02-25 12:33:57
+
+Metagene profiling ...	2021-02-25 12:34:55
+
+trancription boundary stat ...	2021-02-25 12:34:57
+
+translation boundary stat ...	2021-02-25 12:35:04
+
+Motif analyzing ...	2021-02-25 12:39:47
+
+Heatmap for transcription boundary ...	2021-02-25 12:44:13
+
+Heatmap for translation boundary ...	2021-02-25 12:44:23
+
+Coverage for splicing sits ...	2021-02-25 12:49:14
+
+Metagene profiling 2 ...	2021-02-25 12:50:36
+

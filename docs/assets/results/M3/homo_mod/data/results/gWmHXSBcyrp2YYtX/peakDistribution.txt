@@ -1,0 +1,9 @@
+Feature	Frequency	Sample
+Promoter	34	group1
+UTR5	238	group1
+Start Codon	1721	group1
+CDS	5932	group1
+Stop Codon	4143	group1
+UTR3	2411	group1
+Intron	175	group1
+Intergenic	72	group1

@@ -18,24 +18,7 @@ Some of the figures about modification site information are displayed below:
 
 ![RNAmod1](../assets/images/M3/RNAmod4.png)
 
-# RCAS
 
-[RCAS](https://www.bioconductor.org/packages/release/bioc/html/RCAS.html) is an RNA centric annotation system for transcriptome-wide regions of interest.
-
-**No RBP information**
-
-```R
-library(RCAS)
-
-hg19_mod_path <- "/path/to/Mod.bed"
-gff_path <- "/path/to/GRCh37_RefSeq_24.gff"
-runReport( queryFilePath = hg19_mod_path,
-           gffFilePath = gff_path,
-           motifAnalysis = FALSE,
-           goAnalysis = FALSE )
-```
-
-The output HTML file will be saved in the working directory.
 
 
 
@@ -43,4 +26,3 @@ The output HTML file will be saved in the working directory.
 
 [1] Q. Liu and R. I. Gregory, "RNAmod: an integrated system for the annotation of mRNA modifications," Nucleic Acids Res, vol. 47, no. W1, pp. W548-W555, 2019, doi: 10.1093/nar/gkz479. [[paper](https://academic.oup.com/nar/article/47/W1/W548/5506862)]
 
-[2] Bora Uyar, Dilmurat Yusuf, Ricardo Wurmus, Nikolaus Rajewsky, Uwe Ohler, Altuna Akalin; RCAS: an RNA centric annotation system for transcriptome-wide regions of interest. Nucleic Acids Res 2017 gkx120. doi: 10.1093/nar/gkx120 [[paper](https://academic.oup.com/nar/article/45/10/e91/3038237)]

@@ -1,0 +1,24 @@
+<style>
+.pdfobject-container {
+		width: 100%;
+		max-width: 1000px;
+		height: 1000px;
+		margin: 2em 0;
+}
+.pdfobject { border: solid 1px #666; }
+</style>
+<script src='./assets/global/plugins/pdfobject.min.js'></script>
+<div id='pdf' class='pdfobject-container'></div>
+<script>
+var options = {
+	pdfOpenParams: {
+		pagemode: 'thumbs',
+		navpanes: 0,
+		toolbar: 0,
+		statusbar: 0,
+		view: 'FitV'
+	}
+};
+var myPDF = PDFObject.embed('./data/results/D3BiF6hXhhkbfNVK/homer_group1/Motif_6.pdf', '#pdf', options);
+</script>
+

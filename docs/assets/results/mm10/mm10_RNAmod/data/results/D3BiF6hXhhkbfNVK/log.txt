@@ -1,0 +1,142 @@
+Found <a href=./data/results/D3BiF6hXhhkbfNVK//D3BiF6hXhhkbfNVK.upload.bed target=_blank>16921</a> valid records and <a href=./data/results/D3BiF6hXhhkbfNVK//D3BiF6hXhhkbfNVK.bad.bed target=_blank>2</a> non-valid records in <a href=./data/results/D3BiF6hXhhkbfNVK//D3BiF6hXhhkbfNVK.bed target=_blank>17426</a> total bed records for D3BiF6hXhhkbfNVK.	2021-03-12 00:29:53
+
+Reading annotation	2021-03-12 00:30:28
+
+Peak annotating ...	2021-03-12 00:31:15
+
+Exon length stat ...	2021-03-12 00:34:51
+
+Wrinting gene matrix ...	2021-03-12 00:34:53
+
+Wrinting peak matrix ...	2021-03-12 00:34:54
+
+GO enriching ...	2021-03-12 00:34:54
+
+Pathway enriching ...	2021-03-12 00:34:54
+
+Feature stat ...	2021-03-12 00:34:54
+
+Gene bio-types distribution ...	2021-03-12 00:34:55
+
+Features coverage profiling ...	2021-03-12 00:34:57
+
+Metagene profiling ...	2021-03-12 00:35:33
+
+trancription boundary stat ...	2021-03-12 00:35:35
+
+translation boundary stat ...	2021-03-12 00:35:44
+
+Motif analyzing ...	2021-03-12 00:38:14
+
+Heatmap for transcription boundary ...	2021-03-12 01:03:16
+
+Heatmap for translation boundary ...	2021-03-12 01:03:27
+
+<div class='alert alert-success'>Error in compatibleSeqnames(rep(seqnames(x), elementNROWS(y)), seqnames(y@unlistData)): Level set of 'x' must be subset of that of 'y', or vice versa</div>It seems that the reference genome or the genome version is inconsistent with inputs.
+Reading annotation	2021-03-12 03:29:25
+
+Peak annotating ...	2021-03-12 03:30:17
+
+Exon length stat ...	2021-03-12 03:34:04
+
+Wrinting gene matrix ...	2021-03-12 03:34:06
+
+Wrinting peak matrix ...	2021-03-12 03:34:06
+
+GO enriching ...	2021-03-12 03:34:07
+
+Pathway enriching ...	2021-03-12 03:34:07
+
+Feature stat ...	2021-03-12 03:34:07
+
+Gene bio-types distribution ...	2021-03-12 03:34:07
+
+Features coverage profiling ...	2021-03-12 03:34:10
+
+Metagene profiling ...	2021-03-12 03:34:46
+
+trancription boundary stat ...	2021-03-12 03:34:47
+
+translation boundary stat ...	2021-03-12 03:34:57
+
+Motif analyzing ...	2021-03-12 03:37:25
+
+Heatmap for transcription boundary ...	2021-03-12 04:02:26
+
+Heatmap for translation boundary ...	2021-03-12 04:02:37
+
+<div class='alert alert-success'>Error in compatibleSeqnames(rep(seqnames(x), elementNROWS(y)), seqnames(y@unlistData)): Level set of 'x' must be subset of that of 'y', or vice versa</div>It seems that the reference genome or the genome version is inconsistent with inputs.
+Reading annotation	2021-03-12 05:27:46
+
+Peak annotating ...	2021-03-12 05:28:35
+
+Exon length stat ...	2021-03-12 05:32:17
+
+Wrinting gene matrix ...	2021-03-12 05:32:19
+
+Wrinting peak matrix ...	2021-03-12 05:32:20
+
+GO enriching ...	2021-03-12 05:32:20
+
+Pathway enriching ...	2021-03-12 05:32:20
+
+Feature stat ...	2021-03-12 05:32:20
+
+Gene bio-types distribution ...	2021-03-12 05:32:21
+
+Features coverage profiling ...	2021-03-12 05:32:23
+
+Metagene profiling ...	2021-03-12 05:32:59
+
+trancription boundary stat ...	2021-03-12 05:33:00
+
+translation boundary stat ...	2021-03-12 05:33:10
+
+Motif analyzing ...	2021-03-12 05:35:39
+
+Heatmap for transcription boundary ...	2021-03-12 06:00:43
+
+Heatmap for translation boundary ...	2021-03-12 06:00:54
+
+Coverage for splicing sits ...	2021-03-12 06:03:35
+
+Metagene profiling 2 ...	2021-03-12 06:04:23
+
+Completed! Thanks for using RNAmod ...	2021-03-12 06:14:05
+
+Reading annotation	2021-03-12 11:26:06
+
+Peak annotating ...	2021-03-12 11:26:58
+
+Exon length stat ...	2021-03-12 11:30:42
+
+Wrinting gene matrix ...	2021-03-12 11:30:44
+
+Wrinting peak matrix ...	2021-03-12 11:30:44
+
+GO enriching ...	2021-03-12 11:30:45
+
+Pathway enriching ...	2021-03-12 11:30:45
+
+Feature stat ...	2021-03-12 11:30:45
+
+Gene bio-types distribution ...	2021-03-12 11:30:45
+
+Features coverage profiling ...	2021-03-12 11:30:48
+
+Metagene profiling ...	2021-03-12 11:31:24
+
+trancription boundary stat ...	2021-03-12 11:31:26
+
+translation boundary stat ...	2021-03-12 11:31:36
+
+Motif analyzing ...	2021-03-12 11:34:12
+
+Heatmap for transcription boundary ...	2021-03-12 11:59:24
+
+Heatmap for translation boundary ...	2021-03-12 11:59:35
+
+Coverage for splicing sits ...	2021-03-12 12:02:14
+
+Metagene profiling 2 ...	2021-03-12 12:03:05
+

@@ -1,0 +1,9 @@
+Feature	Frequency	Sample
+Promoter	75	group1
+UTR5	821	group1
+Start Codon	2520	group1
+CDS	11655	group1
+Stop Codon	8032	group1
+UTR3	4268	group1
+Intron	337	group1
+Intergenic	264	group1
