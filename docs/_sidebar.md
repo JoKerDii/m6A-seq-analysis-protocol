@@ -29,5 +29,5 @@
   - [Annotation Web Server](M5_Differential_Methylation/RNAmod.md)
 - M6. Reference based analysis
   - [m6A-seq data analysis](M6_Reference_Based_Analysis/exomePeak2.md)
-- Appendix
+- [Reference](appendix/reference.md)
 - **Project Documentation**
