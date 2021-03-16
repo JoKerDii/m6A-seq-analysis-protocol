@@ -1,10 +1,10 @@
-# Homer
+## Motif Discovery (Homer)
 
-Homer is a software for motif discovery and next-gen sequencing analysis. We are going to use this tool to find m6A motifs within peaks that has been found.
+[Homer](http://homer.ucsd.edu/homer/) is a software for motif discovery and next-gen sequencing analysis [11]. We are going to use this tool to find enriched m6A motifs within peaks that has been found.
 
 
 
-## Install Homer
+### Install Homer
 
 ```shell
 # Download and install following the instruction: http://homer.ucsd.edu/homer/introduction/install.html
@@ -22,7 +22,7 @@ $ findMotifs.pl
 
 
 
-## Find Motifs
+### Find Motifs
 
 ```shell
 $ findMotifsGenome.pl Mod.bed /path/to/hg19_genome.fa /path/to/MotifOutput -rna -p 10 -len 5,6
@@ -39,7 +39,3 @@ The figure below shows the enriched motifs in peaks on mm10 transcripts.
 ![homer_mm10_motifs](../assets/images/M3/mm10_motif_homer.png)
 
 
-
-# Reference
-
-[1] S. Heinz, C. Benner, N. Spann, E. Bertolino, Y. C. Lin, P. Laslo et al., "Simple combinations of lineage-determining transcription factors prime cis-regulatory elements required for macrophage and B cell identities," Molecular cell, vol. 38, no. 4, pp. 576-589, 2010. [[paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4763482/)]

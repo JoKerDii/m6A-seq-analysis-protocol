@@ -1,10 +1,10 @@
-# DAVID
+## GO Enrichment Analysis (DAVID)
 
-The **D**atabase for **A**nnotation, **V**isualization and **I**ntegrated **D**iscovery (**DAVID**) is a website providing a comprehensive set of functional annotation tools for investigators to understand biological meaning behind large list of genes [1]. We are going to use this tool to discover enriched gene functions.
+The **D**atabase for **A**nnotation, **V**isualization and **I**ntegrated **D**iscovery (**DAVID**) is a website providing a comprehensive set of functional annotation tools for investigators to understand biological meaning behind large list of genes [15]. We are going to use this tool to discover enriched gene functions.
 
 
 
-## Prepare and Upload Gene Lists 
+### Prepare and Upload Gene Lists 
 
 From the output file ("DiffMod.csv") generated from exomePeak2, we remove duplicated values in "geneID" column and copy all the unique IDs to a txt file ("geneID_diff.txt"). 
 
@@ -12,7 +12,7 @@ Upload txt files to DAVID website with Identifier as "ENTREZ_GENE_ID", species a
 
 
 
-## Analyze Results
+### Analyze Results
 
 Open "Functional Annotation Chart" and click on "Download File" to download the txt file containing results. 
 
@@ -107,6 +107,3 @@ Enriched biological processes regulated by differential methylated genes on mm10
 
 ![GO_bar_plot](../assets/images/M5/mm_pos_neg.png)
 
-# Reference
-
-[1] X. Jiao, B. T. Sherman, D. W. Huang, R. Stephens, M. W. Baseler, H. C. Lane et al., "DAVID-WS: a stateful web service to facilitate gene/protein list analysis," (in eng), Bioinformatics (Oxford, England), vol. 28, no. 13, pp. 1805-1806, 2012, doi: 10.1093/bioinformatics/bts251.[[paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3381967/?report=abstract)]

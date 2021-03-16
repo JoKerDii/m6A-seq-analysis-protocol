@@ -1,8 +1,6 @@
-# exomePeak2
+## Peak Calling (exomePeak2)
 
-We are going to use this package for peak calling, finding enriched m6A sites on HHV8 transcripts.
-
-## Peak Calling
+We are going to use exomePeak2 for peak calling to find enriched m6A sites on HHV8 transcripts. The BED file as output could be used for further analysis.
 
 ```R
 library(exomePeak2)
@@ -46,8 +44,4 @@ An output folder named `exomePeak2_output` will be created in the working direct
 ```
 
 
-
-# Reference
-
-[1] Zhen Wei (2020). exomePeak2: Bias Awared Peak Calling and Quantification for MeRIP-Seq. R package version 1.0.0. [[bioc](http://www.bioconductor.org/packages/release/bioc/html/exomePeak2.html)]
 

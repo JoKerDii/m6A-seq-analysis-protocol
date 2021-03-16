@@ -1,8 +1,8 @@
-# Integrative Genomics Viewer (IGV)
+## Visualization of Reads (IGV)
 
 
 
-## Visualization of Aligned Reads
+### Visualization of Aligned Reads
 
 Upload the following files to [IGV web application](https://igv.org/app/).
 
@@ -13,12 +13,12 @@ Upload the following files to [IGV web application](https://igv.org/app/).
 
 
 
-## Visualization of Methylation Sites
+### Visualization of Methylation Sites
 
 
 
 
-### 1. Generate TDF
+#### 1. Generate TDF
 
 ```shell
 #!/bin/bash
@@ -34,12 +34,9 @@ done
 
 
 
-### 2. Run IGV
+#### 2. Run IGV
 
 The generated TDF files and BED file can then be visualized using IGV browser.
 
 ![igv_app](../assets/images/M4/peaks_igv1.png)
 
-# Reference
-
-[1] H. Thorvaldsdóttir, J. T. Robinson, and J. P. Mesirov, "Integrative Genomics Viewer (IGV): high-performance genomics data visualization and exploration," (in eng), Brief Bioinform, vol. 14, no. 2, pp. 178-92, Mar 2013, doi: 10.1093/bib/bbs017. [[paper](https://pubmed.ncbi.nlm.nih.gov/22517427/)]

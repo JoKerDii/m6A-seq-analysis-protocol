@@ -1,6 +1,6 @@
-# Ballgown
+## Differential Expression Analysis (Ballgown)
 
-[Ballgown](http://www.bioconductor.org/packages/release/bioc/html/ballgown.html) is an R/Bioconductor package for flexible, isoform-level differential expression analysis of RNA-seq data [1]. Ballgown's data structures make it easy to use table-based packages like limma ([Smyth (2005)](https://github.com/alyssafrazee/ballgown/blob/master)), limma Voom ([Law et al. (2014)](http://dx.doi.org/10.1186/gb-2014-15-2-r29)), DESeq ([Anders & Huber (2010)](http://dx.doi.org/10.1186/gb-2010-11-10-r106)), DEXSeq ([Anders et al. (2012)](http://dx.doi.org/10.1101/gr.133744.111)), or edgeR ([Robinson et al. (2010)](http://dx.doi.org/10.1093/bioinformatics/btp616)) for differential expression analysis.
+[Ballgown](http://www.bioconductor.org/packages/release/bioc/html/ballgown.html) is an R/Bioconductor package for flexible, isoform-level differential expression analysis of RNA-seq data [9]. Ballgown's data structures make it easy to use table-based packages like limma ([Smyth (2005)](https://github.com/alyssafrazee/ballgown/blob/master)), limma Voom ([Law et al. (2014)](http://dx.doi.org/10.1186/gb-2014-15-2-r29)), DESeq ([Anders & Huber (2010)](http://dx.doi.org/10.1186/gb-2010-11-10-r106)), DEXSeq ([Anders et al. (2012)](http://dx.doi.org/10.1101/gr.133744.111)), or edgeR ([Robinson et al. (2010)](http://dx.doi.org/10.1093/bioinformatics/btp616)) for differential expression analysis.
 
 Ballgown requires three pre-processing steps:
 
@@ -8,9 +8,7 @@ Ballgown requires three pre-processing steps:
 2. A transcriptome should be assembled, or a reference transcriptome should be downloaded. (**StringTie**)
 3. Expression for the features (transcript, exon, and intron junctions) in the transcriptome should be estimated in a Ballgown readable format. (**StringTie**)
 
-
-
-## Differential Expression Analysis
+### Differential Expression Analysis
 
 An example of the working directory:
 
@@ -169,7 +167,7 @@ Also note that you can remove all transcripts with a low variance across the sam
 
 
 
-## Results
+### Results
 
 DE results for dataset GSE93676:
 
@@ -217,7 +215,3 @@ head(sig_genes)
 ```
 
 
-
-# Reference
-
-[1] A. C. Frazee, G. Pertea, A. E. Jaffe, B. Langmead, S. L. Salzberg, and J. T. Leek, "Flexible isoform-level differential expression analysis with Ballgown," bioRxiv, p. 003665, 2014, doi: 10.1101/003665. [[paper](https://www.biorxiv.org/content/10.1101/003665v1.abstract)]

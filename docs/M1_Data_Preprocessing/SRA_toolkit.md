@@ -1,10 +1,10 @@
-# Obtaining GEO data Using SRA Toolkit
+## Download GEO Data (SRA Toolkit)
 
 The Sequence Read Archive (SRA) is a publicly accessible archive for high throughput sequencing data. The [SRA Toolkit](https://ncbi.github.io/sra-tools/) from NCBI is a collection of tools for using data in the INSDC SRA. It takes the following steps to download data from SRA:
 
 
 
-## Install and Config SRA Toolkit
+### Install and Config SRA Toolkit
 
 ```shell
 # Download and extract the latest version
@@ -20,7 +20,7 @@ $ which fastq-dump
 
 
 
-## Download Data from SRA
+### Download Data from SRA
 
 1. Access the GEO summary page by searching "GSE93676" on [GEO website](https://www.ncbi.nlm.nih.gov/geo/).
 
@@ -74,9 +74,4 @@ For paired-end data, you need to add `--split-files` option in the `fastq-dump` 
 fastq-dump --split-files SRR866997
 ```
 
-
-
-# Reference
-
-SRA-tools wiki on Github: https://github.com/ncbi/sra-tools/wiki
 

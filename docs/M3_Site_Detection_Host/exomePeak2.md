@@ -1,10 +1,10 @@
-# exomePeak2
+## Peak Calling (exomePeak2)
 
-exomePeak2 is an R/Bioconductor package which provides bias-aware quantification and peak detection for Methylated RNA immunoprecipitation sequencing data (MeRIP-Seq) [1]. We are going to use this package for peak calling, finding enriched m6A sites.
+[exomePeak2](http://www.bioconductor.org/packages/release/bioc/html/exomePeak2.html) is an R/Bioconductor package which provides bias-aware quantification and peak detection for Methylated RNA immunoprecipitation sequencing data (MeRIP-Seq) [10]. We are going to use this package for peak calling to predict significant methylation sites.
 
 
 
-## Installation
+### Installation
 
 ```R
 if(!requireNamespace("BiocManager", quietly = TRUE))
@@ -14,7 +14,7 @@ BiocManager::install("exomePeak2")
 
 
 
-## Peak Calling
+### Peak Calling
 
 ```R
 library(exomePeak2)
@@ -78,10 +78,3 @@ An output folder named `exomePeak2_output` will be created in the working direct
 		- ADDInfo_ReadsCount.csv
 		- ADDInfo_RPKM.csv
 ```
-
-
-
-# Reference
-
-[1] Zhen Wei (2020). exomePeak2: Bias Awared Peak Calling and Quantification for MeRIP-Seq. R package version 1.0.0. [[bioc](http://www.bioconductor.org/packages/release/bioc/html/exomePeak2.html)]
-

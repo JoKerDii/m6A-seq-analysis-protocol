@@ -1,10 +1,10 @@
-# Pre-alignment Quality Assessment with FastQC
+## Quality Assessment (FastQC)
 
 It is always necessary to assess the quality of the sequence reads in FASTQ files from the sequencing facility. [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) is a quality control application for high-throughput sequencing data. By using FastQC, we could be aware of any problems in raw sequence data before moving on to the next step. 
 
 
 
-## Install FastQC
+### Install FastQC
 
 ```shell
 # FastQC requires a suitable 64-bit Java Runtime Environment (JRE) installed and in the path. Check the version of Java:
@@ -23,7 +23,7 @@ $ fastqc -help
 
 
 
-## Run FastQC
+### Run FastQC
 
 ```shell
 # Examine the quality of one FastQ file:
@@ -37,7 +37,7 @@ $ fastqc -o /path/to/fastqc_result/ -t 6 /path/to/raw_data/homo/*.fastq
 
 
 
-## FastQC Results
+### FastQC Results
 
 FastQC produces two output files for each FastQ file: an HTML report ("SRR5978869_fastqc.html") and a packed file ("SRR5978869_fastqc.zip").
 
@@ -68,10 +68,3 @@ $ cat ~/all/fastqc_summaries.txt
 ```
 
 For paired-end data, since the two reads of the pair are generated separately, trying to get statistics like per base sequence quality on the combined forward and reverse reads would make no sense. In this case, you may check quality by inputting BAM files.
-
-# Reference
-
-Documentation of FastQC on Babraham Bioinformatics website: http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/
-
-
-

@@ -1,8 +1,8 @@
-# HISAT2
+## Reads Alignment (HISAT2)
 
-[HISAT2](http://daehwankimlab.github.io/hisat2/manual/) is a fast and sensitive alignment program for mapping next-generation sequencing reads to reference genome(s) [1]. We are going to use this tool to align the reads to hg19 genome, HHV8 genome, and mm10 genome, respectively.
+[HISAT2](http://daehwankimlab.github.io/hisat2/manual/) is a fast and sensitive alignment program for mapping next-generation sequencing reads to reference genome(s) [6]. We are going to use this tool to align the reads to hg19 genome, HHV8 genome, and mm10 genome, respectively.
 
-## Install HISAT2
+### Install HISAT2
 
 ```shell
 # Download and extract the latest version
@@ -17,9 +17,9 @@ $ hisat2 --help
 $ hisat2 --version
 ```
 
-## Install Samtools
+### Install Samtools
 
-[Samtools](http://www.htslib.org/) is a suite of programs for interacting with high-throughput sequencing data [3]. SAM files produced by HISAT2 must be sorted and converted to BAM using samtools before running StringTie.
+[Samtools](http://www.htslib.org/) is a suite of programs for interacting with high-throughput sequencing data [7]. SAM files produced by HISAT2 must be sorted and converted to BAM using samtools before running StringTie.
 
 ```shell
 # Download and extract samtools
@@ -33,18 +33,18 @@ $ export PATH=$PATH:/path/to/samtools-1.11
 $ samtools --version
 ```
 
-## Read Alignment
+### Read Alignment
 
-### 1. Build indexes
+#### 1. Build indexes
 
-You can either download HISAT2 indexes from its website: http://daehwankimlab.github.io/hisat2/download/, 
+You can either download HISAT2 indexes from its [website](http://daehwankimlab.github.io/hisat2/download/)
 
 ```shell
 $ wget https://genome-idx.s3.amazonaws.com/hisat/hg19_genome.tar.gz
 $ tar -zxvf hg19_genome.tar.gz
 ```
 
-or download reference sequence and gene annotation from Illumina iGenome website before building index by `hisat2-build` command.
+or download reference sequence and gene annotation from [Illumina iGenome](https://support.illumina.com/sequencing/sequencing_software/igenome.html) before building index by `hisat2-build` command.
 
 ```shell
 $ cd /path/to/homo/
@@ -59,7 +59,7 @@ $ hisat2-build -p 20 mm10_genome.fasta genome
 
  `hisat2-build` generates eight `.ht2` files, from `genome.1.ht2` to `genome.8.ht2`, which we will use for alignment in the next step.
 
-### 2. Run HISAT2 with Samtools
+#### 2. Run HISAT2 with Samtools
 
 Getting sorted BAM and index:
 
@@ -114,8 +114,6 @@ mkdir alignment_summary
 mv *.align_summary alignment_summary/
 ```
 
-
-
 * Note that if the aligned results are going to assemble transcript with StringTie, a `--dta` option is necessary to include the tag `XS` to indicate the genomic strand that produced the RNA from which the read was sequenced. This is required by StringTie. The `hisat2-samtools` command should be modified as
 
   ```shell
@@ -124,8 +122,6 @@ mv *.align_summary alignment_summary/
 
 > `--dta/--downstream-transcriptome-assembly`
 > Report alignments tailored for transcript assemblers including StringTie. With this option, HISAT2 requires longer anchor lengths for de novo discovery of splice sites. This leads to fewer alignments with short-anchors, which helps transcript assemblers improve significantly in computation and memory usage.
-
-
 
 * Also note that for paired end data, you need to modify the `hisat2` command as follows to get SAM file
 
@@ -139,9 +135,3 @@ or modify the `hisat2-samtools` combined command to directly get sorted BAM file
 hisat2 -x genome --summary-file SRR5978827.m6A.align_summary -p 5 -1 /path/to/trim_galore_result/SRR5978827_trimmed_1.fq -2 /path/to/trim_galore_result/SRR5978827_trimmed_2.fq | samtools view -Su |samtools sort -o /path/to/homo_result/SRR5978827_sorted.bam
 ```
 
-
-# Reference
-
-[1] D. Kim, J. M. Paggi, C. Park, C. Bennett, and S. L. Salzberg, "Graph-based genome alignment and genotyping with HISAT2 and HISAT-genotype," Nature Biotechnology, vol. 37, no. 8, pp. 907-915, 2019/08/01 2019, doi: 10.1038/s41587-019-0201-4. [[paper](https://pubmed.ncbi.nlm.nih.gov/31375807/)]
-
-[2] H. Li, B. Handsaker, A. Wysoker, T. Fennell, J. Ruan, N. Homer et al., "The Sequence Alignment/Map format and SAMtools," (in eng), Bioinformatics, vol. 25, no. 16, pp. 2078-9, Aug 15 2009, doi: 10.1093/bioinformatics/btp352.[[paper](https://pubmed.ncbi.nlm.nih.gov/19505943/)]

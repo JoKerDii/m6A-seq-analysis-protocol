@@ -1,10 +1,10 @@
-# Trim Galore
+## Reads Trimming (Trim Galore)
 
-Trim Galore is a Perl wrapper around Cutadapt and FastQC to consistently apply adapter and quality trimming to FastQ files. We will use this tool for quality trimming, adapter trimming, and removing short sequences.
+[Trim Galore](https://github.com/FelixKrueger/TrimGalore/blob/master/Docs/Trim_Galore_User_Guide.md) is a Perl wrapper around Cutadapt and FastQC to consistently apply adapter and quality trimming to FastQ files. We will use this tool for quality trimming, adapter trimming, and removing short sequences.
 
 
 
-## Install Trim Galore
+### Install Trim Galore
 
 Before installation, ensure that [Cutadapt](https://github.com/marcelm/cutadapt) and [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) are already installed.
 
@@ -29,7 +29,7 @@ $ trim_galore -v
 
 
 
-## Adaptive Quality and Adapter Trimming
+### Adaptive Quality and Adapter Trimming
 
 In this procedure, first, low-quality base calls are trimmed off from the 3' end of the reads before adapter removal. Next, adapter sequences from the 3’ end of reads are detected and removed by cutadapt. Lastly, trimmed short sequences (default: < 20bp) are filtered.
 
@@ -66,11 +66,11 @@ trim_galore --paried -o /path/to/trim_galore_result/ *_1.fastq *_2.fastq
 
 
 
-## Outputs
+### Outputs
 
 Trim Galore produced two output files for each FastQ file: one text file ("SRR5978869.fastq_trimming_report.txt") and a trimmed FastQ file ("SRR5978869_trimmed.fq"). 
 
-### 1. The text file
+#### 1. The text file
 
 The text file provides a summary of running parameters.
 
@@ -91,11 +91,7 @@ Quality Phred score cutoff: 20
 Quality encoding type selected: ASCII+33
 ```
 
-### 2. The trimmed FastQ
+#### 2. The trimmed FastQ
 
 The trimmed FastQ file can be used for further analysis.
-
-# Reference
-
-Trim Galore User Guide on Github: https://github.com/FelixKrueger/TrimGalore/blob/master/Docs/Trim_Galore_User_Guide.md
 

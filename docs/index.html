@@ -67,29 +67,64 @@
 
       // CUSTOM PLUGINS
       // -----------------------------------------------------------------
+      plugins: [
+        function (hook, vm) {
+          hook.beforeEach(function (html) {
+            console.log("Here is the current link.")
+            console.log(vm.route.file)
+            url = vm.route.file
+              .replace('raw.githubusercontent.com', 'github.com')
+              .replace(/\/master/, '/blob/master')
+              .replace('.md', '.pdf')
+            console.log(url)
+
+            // if (/githubusercontent\.com/.test(vm.route.file)) {
+
+            //   url = vm.route.file
+            //     .replace('raw.githubusercontent.com', 'github.com')
+            //     .replace(/\/master/, '/blob/master')
+            // } else {
+            //   url = 'https://github.com/JoKerDii/m6A-seq-analysis-protocol/tree/master/docs/' + vm.route.file
+            // }
+            // var editHtml1 = '[:memo: Edit this Page on GitHub](' + url + ')\n'
+            editHtml1 = '<p>Download the PDF version of <a href=' + url + ' download>this page</a> or <a href="./intro/protocol.pdf" download>this protocol</a>.</p>'
+
+            // Adjust GitHub displayable image URL format to also work in Docsify
+            // html = html.replace(new RegExp("../assets/images", 'ig'), "assets/images");
+
+            return html
+              + '\n\n----\n\n'
+              + editHtml1
+              + '<p><i>Meng Lab in XJTLU</i></p>'
+            // + '\n'
+            // + editHtml
+          })
+        }
+      ]
+
       // plugins: [
       //   function (hook, vm) {
       //     hook.beforeEach(function (html) {
-      //       if (/githubusercontent\.com/.test(vm.route.file)) {
-      //         url = vm.route.file
-      //           .replace('raw.githubusercontent.com', 'github.com')
-      //           .replace(/\/master/, '/blob/master')
-      //       } else {
-      //         url = 'https://github.com/hibbitts-design/docsify-open-publishing-starter-kit/tree/master/docs/' + vm.route.file
-      //       }
-      //       var editHtml = '[:memo: Edit this Page on GitHub](' + url + ')\n'
+
+      //       url = 'https://github.com/JoKerDii/m6A-seq-analysis-protocol/tree/master/docs/_sidebar.md'
+
+
+      //       var editHtml = '[:memo: Download the PDF version of the protocol ](' + url + ')\n'
+      //       // var editHtml = '<a href="https://github.com/JoKerDii/m6A-seq-analysis-protocol/tree/master/docs/_sidebar.md" download">Download the PDF version of the protocol</a>'
 
       //       // Adjust GitHub displayable image URL format to also work in Docsify
-      //       html = html.replace(new RegExp("../assets/images", 'ig'), "assets/images");
+      //       // html = html.replace(new RegExp("../assets/images", 'ig'), "assets/images");
 
       //       return editHtml
       //         + html
       //         + '\n\n----\n\n'
-      //         + '<a href="https://docsify.js.org" target="_blank" style="color: inherit; font-weight: normal;">Powered by docsify</a>'
+      //       // + '<a href="https://docsify.js.org" target="_blank" style="color: inherit; font-weight: normal;">Powered by docsify</a>'
       //     })
       //   }
       // ]
+
     }
+
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
 

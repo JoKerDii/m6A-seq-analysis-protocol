@@ -1,12 +1,8 @@
-# exomePeak2
+## exomePeak2
 
+Here we use exomePeak2 to conduct reference based quantification and differential analysis.
 
-
-## Reference based Quantification and Differential Analysis
-
-
-
-### 1. Download and Convert Basic Site Information
+### Download and Convert Basic Site Information
 
 Download single base RNA modification annotation of m6A on human genome from [m6A-Atlas database](http://10.7.6.58/m6A-Atlas/download.html), which should be tabular data in a txt file. Convert tabular data to genomic ranges by:
 
@@ -39,7 +35,7 @@ saveRDS(mod_annot, "/path/to/mod_annot.rds")
 
 
 
-### 2. Reference-based Analysis
+### Reference-based Analysis
 
 ```R
 library(exomePeak2)
@@ -84,8 +80,4 @@ An output folder named `exomePeak2_output` will be created in the working direct
 ```
 
 
-
-# Reference
-
-[1] Zhen Wei (2020). exomePeak2: Bias Awared Peak Calling and Quantification for MeRIP-Seq. R package version 1.0.0. [[bioc](http://www.bioconductor.org/packages/release/bioc/html/exomePeak2.html)]
 

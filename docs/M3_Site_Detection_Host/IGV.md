@@ -1,10 +1,10 @@
-# Integrative Genomics Viewer (IGV)
+## Visualization of Reads (IGV)
 
-The Integrative Genomics Viewer (IGV) is a high-performance viewer that efficiently handles large heterogeneous data sets [1]. We are going to use this tool to visualize aligned reads on genome and differential expressed sites.
+The Integrative Genomics Viewer (IGV) is a high-performance viewer that efficiently handles large heterogeneous data sets [13]. We are going to use this tool to visualize aligned reads on genome and the differential methylated sites.
 
 
 
-## Visualization of Aligned Reads
+### Visualization of Aligned Reads
 
 Upload BAM and its index (.bai) file to [IGV web application](https://igv.org/app/) and zoom in to see the aligned reads.
 
@@ -12,9 +12,9 @@ Upload BAM and its index (.bai) file to [IGV web application](https://igv.org/ap
 
 
 
-## Visualization of Methylation Sites
+### Visualization of Methylation Sites
 
-### 1. Install IGV
+#### 1. Install IGV
 
 ```shell
 # Java of version 11 is required. 
@@ -30,9 +30,7 @@ $ nohup bash igv.sh
 $ igvtools version
 ```
 
-
-
-### 2. Generate TDF
+#### 2. Generate TDF
 
 ```bash
 #!/bin/bash
@@ -60,14 +58,10 @@ done
 
 
 
-### 3. Run IGV
+#### 3. Run IGV
 
-The generated TDF files and BED file can then be visualized using IGV browser.
+The generated TDF files and BED file can then be visualized using IGV browser. As clearly shown in the figure below zooming in a region of an antisense gene , the exomePeak2 has the ability to distinguish methylation sites on specific strands.
 
-![igv_app_anti](../assets/images/M3/igv_peak_anti.png)
+![igv_app_anti](../assets/images/M3/igv_peak_anti2.png)
 
 
-
-# Reference
-
-[1] H. Thorvaldsdóttir, J. T. Robinson, and J. P. Mesirov, "Integrative Genomics Viewer (IGV): high-performance genomics data visualization and exploration," (in eng), Brief Bioinform, vol. 14, no. 2, pp. 178-92, Mar 2013, doi: 10.1093/bib/bbs017. [[paper](https://pubmed.ncbi.nlm.nih.gov/22517427/)]
