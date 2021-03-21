@@ -83,9 +83,7 @@ ggdraw() +
   draw_plot(p2, .5, 0, .5, 1)
 ```
 
-
-
-![igv_app](../assets/images/M3/distributionOfPeaks.png)
+![igv_app](../assets/images/M5/distributionOfPeaks_diff.png)
 
 ### Report Isoform Probabilities 
 

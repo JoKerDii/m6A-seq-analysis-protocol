@@ -64,8 +64,6 @@ Zhen Wei: Zhen.Wei01@xjtlu.edu.cn
 
 # M0. Check Databases
 
-## Checking Databases
-
 By checking the following databases before analyzing the datasets, we could have a basic understanding of the data in terms of estimated quantitative profiles, conservation, biological functions, annotation, and disease association of epi-transcriptome.
 
 
@@ -118,19 +116,19 @@ $ which fastq-dump
 
 1. Access the GEO summary page by searching "GSE93676" on [GEO website](https://www.ncbi.nlm.nih.gov/geo/).
 
-![GEOwebsite](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M1/GEOwebsite.png)
+![GEOwebsite](../assets/images/M1/GEOwebsite.png)
 
 2. Find a link for "SRA" under the heading "Relations".
 
-![GEORelations](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M1/GEORelations.png)
+![GEORelations](../assets/images/M1/GEORelations.png)
 
 3. Click on the link (SRP096845) which sends you to a page of all the biological samples with specific runs and files in this study.
 
-![AllRuns](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M1/AllRuns.png)
+![AllRuns](../assets/images/M1/AllRuns.png)
 
 4. To find files of interest in one comprehensive list, navigate to the bottom of the page then click: "send to" > "Run Selector" > "go". Use "Filter List" to narrow down the choices. 
 
-![RunSelector](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M1/RunSelector.png)
+![RunSelector](../assets/images/M1/RunSelector.png)
 
 5. Extract FastQ files from SRA-accession using SRA-Toolkit
 
@@ -213,7 +211,7 @@ FastQC produces two output files for each FastQ file: an HTML report ("SRR597886
 
 You could transfer the HTML file to local place by *FileZilla* (mac) or *WinSCP* (win), and open the file in browser. A screenshot of part of the HTML file is shown below.
 
-![fastqc_html_report](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M1/fastqc_html_report.png)
+![fastqc_html_report](../assets/images/M1/fastqc_html_report.png)
 
 Note that two of the most important analysis modules in FastQC are **“Per base sequence quality”** plot and the **“Overrepresented sequences”** table. The “Per base sequence quality” plot provides the distribution of quality scores across all bases at each position in the reads. The “Overrepresented sequences” table displays the sequences (at least 20 bp) that occur in more than 0.1% of the total number of sequences, which aids in identifying contamination. You could also refer to [Analysis Modules](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/) in FastQC documentation for the interpretation of the HTML report. 
 
@@ -299,7 +297,7 @@ trimGalore ${s}
 done
 ```
 
-For trimming paired-end data, you need to add a `--paired` option in the `trim_galore` command .
+For trimming paired-end data, you need to add a `--paired` option in the `trim_galore` command.
 
 ```shell
 trim_galore --paried -o /path/to/trim_galore_result/ *_1.fastq *_2.fastq
@@ -749,11 +747,11 @@ p2 = heatmap(gene_expression, results_genes)
 
 A barplot shows the range and general distribution of FPKM values: 
 
-![ballgown_viz2](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M2/ballgown_viz2.png)
+![ballgown_viz2](../assets/images/M2/ballgown_viz2.png)
 
 A heat map shows the significant differential expressed genes among all samples:
 
-![ballgown_viz1](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M2/ballgown_viz1.png)
+![ballgown_viz1](../assets/images/M2/ballgown_viz1.png)
 
 Note that `pData` should hold a data frame of phenotype information for the samples in the experiment, and be added during ballgown object construction. It can also be added later. 
 
@@ -927,15 +925,15 @@ Note that Homer can analyze strand-specific genomic regions for motifs by runnin
 
 The figure below shows the enriched motifs in peaks on hg19 transcripts.
 
-![homer_homo_motifs](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M3/hg19_motif_homer.png)
+![homer_homo_motifs](../assets/images/M3/hg19_motif_homer.png)
 
 The figure below shows the enriched motifs in peaks on mm10 transcripts.
 
-![homer_mm10_motifs](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M3/mm10_motif_homer.png)
+![homer_mm10_motifs](../assets/images/M3/mm10_motif_homer.png)
 
 ## Distribution of m6A sites (MetaTX)
 
-The [MetaTX](https://github.com/yue-wang-biomath/MetaTX.1.0) is designed to visualize the transcriptomic distribution of RNA-related genomic features [12]. We are going to use this tool to display the distribution of reads along the transcriptome.
+[MetaTX](https://github.com/yue-wang-biomath/MetaTX.1.0) is designed to visualize the transcriptomic distribution of RNA-related genomic features [12]. We are going to use this tool to display the distribution of reads along the transcriptome.
 
 
 
@@ -1031,7 +1029,7 @@ ggdraw() +
   draw_plot(p2, .5, 0, .5, 1)
 ```
 
-![igv_app](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M3/distributionOfPeaks.png)
+![igv_app](../assets/images/M3/distributionOfPeaks.png)
 
 ### Report Isoform Probabilities 
 
@@ -1044,13 +1042,13 @@ write.csv(isoform_probs, "isoform_probs.csv")
 
 Here are the first few rows of the outputs.
 
-![isoform_probs](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M3/metaTX_isoform.png)
+![isoform_probs](../assets/images/M3/metaTX_isoform.png)
 
 
 
 ## Visualization of Reads (IGV)
 
-The Integrative Genomics Viewer (IGV) is a high-performance viewer that efficiently handles large heterogeneous data sets [13]. We are going to use this tool to visualize aligned reads on genome and the differential methylated sites.
+The Integrative Genomics Viewer (IGV) is a high-performance viewer that efficiently handles large heterogeneous data sets [13]. We are going to use this tool to visualize aligned reads on genome and the differential methylation sites.
 
 
 
@@ -1058,7 +1056,7 @@ The Integrative Genomics Viewer (IGV) is a high-performance viewer that efficien
 
 Upload BAM and its index (.bai) file to [IGV web application](https://igv.org/app/) and zoom in to see the aligned reads.
 
-![igv_app](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M3/IGV.png)
+![igv_app](../assets/images/M3/IGV.png)
 
 
 
@@ -1112,7 +1110,7 @@ done
 
 The generated TDF files and BED file can then be visualized using IGV browser. As clearly shown in the figure below zooming in a region of an antisense gene , the exomePeak2 has the ability to distinguish methylation sites on specific strands.
 
-![igv_app_anti](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M3/igv_peak_anti2.png)
+![igv_app_anti](../assets/images/M3/igv_peak_anti2.png)
 
 ## RNA Annotation (RNAmod)
 
@@ -1124,11 +1122,11 @@ Some of the figures about modification site information are displayed below:
 
 *  Peaks gene features distribution:
 
-![RNAmod1](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M3/RNAmod1.png)
+![RNAmod1](../assets/images/M3/RNAmod1.png)
 
 * mRNA metagene plot
 
-![RNAmod1](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M3/RNAmod2.png)
+![RNAmod1](../assets/images/M3/RNAmod2.png)
 
 * Gene types distribution
 
@@ -1194,7 +1192,7 @@ Upload the following files to [IGV web application](https://igv.org/app/).
 * HHV8 virus genome (.fa) and its index (.fai) to "Genome".
 * BAM and its index (.bai) file to "Track".
 
-![igv_app](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M4/reads_igv.png)
+![igv_app](../assets/images/M4/reads_igv.png)
 
 
 
@@ -1223,7 +1221,7 @@ done
 
 The generated TDF files and BED file can then be visualized using IGV browser.
 
-![igv_app](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M4/peaks_igv1.png)
+![igv_app](../assets/images/M4/peaks_igv1.png)
 
 
 
@@ -1408,9 +1406,7 @@ ggdraw() +
   draw_plot(p2, .5, 0, .5, 1)
 ```
 
-
-
-![igv_app](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M3/distributionOfPeaks.png)
+![igv_app](../assets/images/M5/distributionOfPeaks_diff.png)
 
 ### Report Isoform Probabilities 
 
@@ -1423,13 +1419,13 @@ write.csv(isoform_probs, "isoform_probs.csv")
 
 Here are the first few rows of the outputs.
 
-![isoform_probs2](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M5/metaTX_diff_isoform.png)
+![isoform_probs2](../assets/images/M5/metaTX_diff_isoform.png)
 
 ## Visualization of Reads (IGV)
 
 Here we use the IGV tool to visualize reads and peaks comparing control and experimental groups. This task can be simply done by uploading the generated TDF files and BED file onto the IGV browser.
 
-![igv_app_anti](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M5/diff_peaks_anti.png)
+![igv_app_anti](../assets/images/M5/diff_peaks_anti.png)
 
 ## GO Enrichment Analysis (DAVID)
 
@@ -1449,7 +1445,7 @@ Upload txt files to DAVID website with Identifier as "ENTREZ_GENE_ID", species a
 
 Open "Functional Annotation Chart" and click on "Download File" to download the txt file containing results. 
 
-![streme_motif_finding](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M5/david_chart.png)
+![streme_motif_finding](../assets/images/M5/david_chart.png)
 
 Import txt file into R, analyze results and display in figures.
 
@@ -1534,11 +1530,11 @@ generateFigure_hyper_hypo(charts)
 
 Enriched biological processes regulated by differential methylated genes on hg19 genome.
 
-![GO_bar_plot](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M5/homo_pos_neg.png)
+![GO_bar_plot](../assets/images/M5/homo_pos_neg.png)
 
 Enriched biological processes regulated by differential methylated genes on mm10 genome.
 
-![GO_bar_plot](D:/git/m6a-seq-analysis-protocol/m6A-seq-analysis-protocol/docs/assets/images/M5/mm_pos_neg.png)
+![GO_bar_plot](../assets/images/M5/mm_pos_neg.png)
 
 ## RNA Annotation (RNAmod)
 
@@ -1548,15 +1544,15 @@ Some of the figures about modification site information are displayed below:
 
 *  Peaks gene features distribution:
 
-![RNAmod1](D:\git\m6a-seq-analysis-protocol\m6A-seq-analysis-protocol\docs\assets\images\M5\RNAmod1.png)
+![RNAmod1](../assets/images/M5/RNAmod1.png)
 
 * mRNA metagene plot
 
-![RNAmod1](D:\git\m6a-seq-analysis-protocol\m6A-seq-analysis-protocol\docs\assets\images\M5\RNAmod2.png)
+![RNAmod1](..\assets\images\M5\RNAmod2.png)
 
 * Gene types distribution
 
-![RNAmod1](D:\git\m6a-seq-analysis-protocol\m6A-seq-analysis-protocol\docs\assets\images\M5\RNAmod4.png)
+![RNAmod1](..\assets\images\M5\RNAmod4.png)
 
 # M6. Reference based analysis
 
