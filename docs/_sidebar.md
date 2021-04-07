@@ -15,7 +15,6 @@
 - M3. Site Detection - Host
   - [m6A-seq data analysis](M3_Site_Detection_Host/exomePeak2.md)
   - [Motif finding](M3_Site_Detection_Host/Homer.md)
-  - [Distribution of m6A sites](M3_Site_Detection_Host/MetaTX.md)
   - [Visualization of reads](M3_Site_Detection_Host/IGV.md)
   - [Annotation Web Server](M3_Site_Detection_Host/RNAmod.md)
 - M4. Site Detection - Virus

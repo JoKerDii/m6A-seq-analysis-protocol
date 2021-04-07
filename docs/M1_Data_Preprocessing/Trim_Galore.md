@@ -61,7 +61,7 @@ done
 For trimming paired-end data, you need to add a `--paired` option in the `trim_galore` command .
 
 ```shell
-$ trim_galore --paried -o /path/to/trim_galore_result/ *_1.fastq *_2.fastq
+$ trim_galore --paired -o /path/to/trim_galore_result/ *_1.fastq *_2.fastq
 ```
 
 
