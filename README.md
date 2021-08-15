@@ -1,8 +1,3 @@
-# m6A-seq-analysis-protocol
+# A protocol for m6A-seq data analysis.
 
-
-
-Please see [docsify-open-starter-kit](https://github.com/hibbitts-design/docsify-open-publishing-starter-kit) for more information about this Docsify theme.
-
-
-
+https://jokerdii.github.io/m6A-seq-analysis-protocol/
